@@ -1,10 +1,10 @@
 import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png"
-import "../css/login_register_page.css"
+import "../css/Login_page.css"
 import "https://kit.fontawesome.com/728d58002e.js"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAt,faUnlock, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faAt, faUnlock, faArrowLeft , faEye } from '@fortawesome/free-solid-svg-icons'
 
 //<script src="https://kit.fontawesome.com/728d58002e.js" crossorigin="anonymous"></script>
 
@@ -32,6 +32,10 @@ function Login() {
                 <input type="password"  placeholder="Password"></input>
                 <label htmlFor="password" className="labelIcon">
                     <FontAwesomeIcon icon={faUnlock} fontSize = {30} color ="#C3C3C3" /> 
+                </label>
+                <label className="eye">
+                <FontAwesomeIcon icon={faEye} fontSize = {30} color ="#C3C3C3"/>   {/*TODO: when change icon => change htmlFor="password" to "text" */}
+
                 </label>
             </div>
 

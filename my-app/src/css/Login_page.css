@@ -36,21 +36,28 @@ input{
     border-width: 0px 0px 1px 0px;
     border-color: #C3C3C3;
     padding: 0 0 10px 65px ;            /*top right bottom left*/
-    width: 100%;
+    width: 80%;
     font-size: 26px;
 }
 input:focus {
     outline: none;
 }
-.labelIcon {
+.labelIcon  {
     position: absolute;
     top: 0;
     display: block;
 }
+.eye{
+    position: absolute;
+    top: 0;
+    display: block;
+    right: 8%;
+
+}
 .formGroup{
     position: relative;
     padding-bottom: 10px;
-    width: 80%;
+    width: 90%;
 }
 .signUp{
     align-self: center;
@@ -95,3 +102,5 @@ a {
     border-radius: 15px;
     background-color: #EFEFEF;
 }
+
+
