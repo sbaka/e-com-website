@@ -1,23 +1,34 @@
 import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
-import arrowPic from "../assets/arrow_signIn.png"
-import React from 'react';
-import "../css/Login_page.css"
-import "https://kit.fontawesome.com/728d58002e.js"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAt, faUnlock, faArrowLeft, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
-
-
-
+import arrowPic from "../assets/arrow_signIn.png";
+import React from "react";
+import "../css/Login_page.css";
+import "https://kit.fontawesome.com/728d58002e.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faAt,
+    faUnlock,
+    faArrowLeft,
+    faEye,
+    faEyeSlash,
+} from "@fortawesome/free-solid-svg-icons";
 
 function Login() {
-    const [eye, setEye] = React.useState(); {/*to handle the changes on click of the icon*/ }
-    function ChangePasswordToText() {
-        {/*switch beetween icons + password or text type*/ }
-        if (eye) { setEye(false) }
-        if (!eye) { setEye(true) }
+    const [eye, setEye] = React.useState();
+    {
+        /*to handle the changes on click of the icon*/
     }
-
+    function ChangePasswordToText() {
+        {
+            /*switch beetween icons + password or text type*/
+        }
+        if (eye) {
+            setEye(false);
+        }
+        if (!eye) {
+            setEye(true);
+        }
+    }
 
     return (
         <div className="parent">
@@ -35,29 +46,38 @@ function Login() {
                     </label>
                 </div>
 
-
                 <br />
 
                 <div className="formGroup">
-                    <input type={eye ? "text" : "password"} placeholder="Password"></input>
+                    <input
+                        type={eye ? "text" : "password"}
+                        placeholder="Password"
+                    ></input>
                     <label htmlFor="password" className="labelIcon">
                         <FontAwesomeIcon icon={faUnlock} fontSize={30} color="#C3C3C3" />
                     </label>
                     <label className="eye">
                         <FontAwesomeIcon
                             icon={eye ? faEye : faEyeSlash}
-                            fontSize={30} color="#C3C3C3"
+                            fontSize={30}
+                            color="#C3C3C3"
                             className="eyeicon"
-                            onClick={ChangePasswordToText} />
+                            onClick={ChangePasswordToText}
+                        />
                     </label>
                 </div>
 
                 <div className="signUp">
-                    <p>You don't have an account yet ? <a href="">Sign up</a></p>
+                    <p>
+                        You don't have an account yet ? <a href="">Sign up</a>
+                    </p>
                 </div>
 
                 <div className="bottomDiv">
-                    <button type="submit" className="submitBtn"><p>Sign in </p><img id="arrow" src={arrowPic} alt="" /></button>
+                    <button type="submit" className="submitBtn">
+                        <p>Sign in </p>
+                        <img id="arrow" src={arrowPic} alt="" />
+                    </button>
                     Or
                     <div>
                         <img src={fbLogo} alt="fb" />
@@ -67,6 +87,6 @@ function Login() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 export default Login;
