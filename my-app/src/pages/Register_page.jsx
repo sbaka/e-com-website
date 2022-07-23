@@ -11,10 +11,10 @@ import {
   faUser,
   faEye,
   faCheck,
+  faEyeSlash
 } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 
-//<script src="https://kit.fontawesome.com/728d58002e.js" crossorigin="anonymous"></script>
 
 const passwordReg =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]|.*?[#?!@$%^&*-]).{8,}$/gm;
@@ -25,13 +25,23 @@ const handleAnimation = (event) => {
 
 class Register extends Component {
   state = {
-    /*state for icons highlight */ user: false,
+    /*state for icons highlight */
+    user: false,
     email: false,
     password: false,
     retype: false,
+    eye: true
   };
-
+  ChangePasswordToText() {
+    /*switch beetween icons + password or text type*/
+    this.setState({
+      eye: !this.state.eye,
+    })
+    console.log(this.state.eye)
+  };
   render() {
+
+
     return (
       <div className="parent">
         <div className="container">
@@ -47,26 +57,19 @@ class Register extends Component {
             <input
               id="username"
               placeholder="Username"
+              autoComplete="off"
               onFocus={() =>
                 this.setState({ user: true })
               } /*user icon highlight added*/
               onBlur={() =>
                 this.setState({ user: false })
               } /*user icon highlight removed */
-            ></input>
+            />
             <label htmlFor="username" className="labelIcon">
-              {this.state.user ? (
-                <FontAwesomeIcon icon={faUser} fontSize={30} color="#2c3e50" />
-              ) : (
-                <FontAwesomeIcon icon={faUser} fontSize={30} color="#C3C3C3" />
-              )}
+              <FontAwesomeIcon icon={faUser} fontSize={30} color={this.state.user ? "#2c3e50" : "#C3C3C3"} />
             </label>
             <label htmlFor="username" className="RightIcon">
-              {this.state.user ? (
-                <FontAwesomeIcon icon={faCheck} fontSize={30} color="green" />
-              ) : (
-                <FontAwesomeIcon icon={faCheck} fontSize={30} color="#C3C3C3" />
-              )}
+              <FontAwesomeIcon icon={faCheck} fontSize={30} color={this.state.user ? "green" : "#C3C3C3"} />
             </label>
           </div>
 
@@ -76,22 +79,18 @@ class Register extends Component {
             <input
               id="email"
               placeholder="E-mail"
+              autoComplete="off"
               onFocus={() => this.setState({ email: true })}
               onBlur={() => this.setState({ email: false })}
-            ></input>
+            />
+
             <label htmlFor="email" className="labelIcon">
-              {this.state.email ? (
-                <FontAwesomeIcon icon={faAt} fontSize={30} color="#2c3e50" />
-              ) : (
-                <FontAwesomeIcon icon={faAt} fontSize={30} color="#C3C3C3" />
-              )}
+              <FontAwesomeIcon icon={faAt} fontSize={30} color={this.state.email ? "#2c3e50" : "#C3C3C3"} />
             </label>
             <label htmlFor="username" className="RightIcon">
-              {this.state.email ? (
-                <FontAwesomeIcon icon={faCheck} fontSize={30} color="green" />
-              ) : (
-                <FontAwesomeIcon icon={faCheck} fontSize={30} color="#C3C3C3" />
-              )}
+
+              <FontAwesomeIcon icon={faCheck} fontSize={30} color={this.state.email ? "green" : "#C3C3C3"} />
+
             </label>
           </div>
 
@@ -101,6 +100,7 @@ class Register extends Component {
             <input
               type="password"
               placeholder="Password"
+
               onFocus={() => this.setState({ password: true })}
               onBlur={() => this.setState({ password: false })}
             ></input>
@@ -120,11 +120,12 @@ class Register extends Component {
               )}
             </label>
             <label htmlFor="username" className="RightIcon">
-              {this.state.password ? (
-                <FontAwesomeIcon icon={faEye} fontSize={30} color="green" />
-              ) : (
-                <FontAwesomeIcon icon={faEye} fontSize={30} color="#C3C3C3" />
-              )}
+              <FontAwesomeIcon
+                icon={this.state.eye ? faEye : faEyeSlash}
+                fontSize={30}
+                color={this.state.password ? "green" : "#C3C3C3"}
+                onClick={this.ChangePasswordToText}
+              />
             </label>
           </div>
 

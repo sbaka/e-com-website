@@ -17,25 +17,16 @@ import {
 
 
 function Login() {
-    const [eye, setEye] = React.useState();
-    {
-        /*to handle the changes on click of the icon*/
-    }
+    const [eye, setEye] = React.useState();        /*to handle the changes on click of the icon*/
+
     function ChangePasswordToText() {
-        {
-            /*switch beetween icons + password or text type*/
-        }
-        if (eye) {
-            setEye(false);
-        }
-        if (!eye) {
-            setEye(true);
-        }
+        /*switch beetween icons + password or text type*/
+        setEye(!eye)
     }
 
     return (
-        
-        <div className="parent"> 
+
+        <div className="parent">
             <div className="container_login">
                 <button className="return">
                     <FontAwesomeIcon icon={faArrowLeft} fontSize={30} />
@@ -70,9 +61,9 @@ function Login() {
                         />
                     </label>
                 </div>
-                
+
                 <br />
-                
+
                 <div className="signUp">
                     <p>
                         You don't have an account yet ? <a href="/Register">Sign up</a>
@@ -80,7 +71,7 @@ function Login() {
                 </div>
 
                 <br />
-                
+
                 <div className="bottomDiv">
                     <button type="submit" className="submitBtn">
                         <p>Sign in </p>
@@ -95,7 +86,7 @@ function Login() {
                 </div>
                 <br />
             </div>
-            
+
         </div>
     );
 }
