@@ -3,7 +3,7 @@
 import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
-import "../css/Register_page.css";
+import "../css/Register_page_style.css";
 import "https://kit.fontawesome.com/728d58002e.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -112,7 +112,6 @@ class Register extends Component {
     //check if the username matches with the regex if yes itshows the green color if no it shows the gray one
     else this.setState({ emailAccepted: false });
   };
-
   render() {
     return (
       <div className="parent">
