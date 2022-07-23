@@ -107,10 +107,6 @@ input:focus {
   animation-fill-mode: forwards;
 }
 
-FontAwesomeIcon .icona {
-  color: "green";
-}
-
 @keyframes inputAnimation {
   from {
     border-color: transparent;
