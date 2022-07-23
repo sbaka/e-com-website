@@ -21,6 +21,17 @@
     flex-direction: column;
     padding-left: 45px;
     margin: 55px;
+}
+/* all of them have pointer cursor, btns and those 2 continue with google/fb*/
+button, div > img {
+    cursor: pointer;
+}
+.return{
+    width: 75px;
+    height: 75px;
+    border-color: transparent;
+    border-radius: 15px;
+    background-color: #EFEFEF;
 }  
 h2 {
     color : #2C3E50;
@@ -48,11 +59,11 @@ input:focus {
     display: block;
 }
 .eye{
+    cursor: pointer;
     position: absolute;
     top: 0;
     display: block;
     right: 8%;
-
 }
 .formGroup{
     position: relative;
@@ -95,12 +106,6 @@ a {
     align-items: center;
 }
 
-.return{
-    width: 75px;
-    height: 75px;
-    border-color: transparent;
-    border-radius: 15px;
-    background-color: #EFEFEF;
-}
+
 
 
