@@ -1,7 +1,7 @@
 import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
-import "../css/Register_page.css";
+import "../css/Register_page_style.css";
 import "https://kit.fontawesome.com/728d58002e.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -55,12 +55,11 @@ class Register extends Component {
               } /*user icon highlight removed */
             ></input>
             <label htmlFor="username" className="labelIcon">
-              <FontAwesomeIcon
-                className="icona"
-                icon={faUser}
-                fontSize={30}
-                onClick={handleAnimation}
-              />
+              {this.state.user ? (
+                <FontAwesomeIcon icon={faUser} fontSize={30} color="#2c3e50" />
+              ) : (
+                <FontAwesomeIcon icon={faUser} fontSize={30} color="#C3C3C3" />
+              )}
             </label>
             <label htmlFor="username" className="RightIcon">
               {this.state.user ? (
@@ -171,7 +170,7 @@ class Register extends Component {
 
           <div className="signUp">
             <p>
-              Already a member ? <a href="">Sign in</a>
+              Already a member ? <a href="/Login">Sign in</a>
             </p>
           </div>
 
