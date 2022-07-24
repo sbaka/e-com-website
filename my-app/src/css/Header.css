@@ -1,0 +1,52 @@
+* {
+  font-family: "Inter", sans-serif;
+  margin: 0;
+}
+
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #eeeeef;
+  height: 80px;
+}
+.Logo {
+  position: absolute;
+  right: 50%;
+  padding: 10px;
+}
+.headerRight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.icon {
+  padding: 0px 20px;
+}
+.signin_up {
+  display: flex;
+  flex-direction: row;
+  margin-left: 40px;
+}
+.links {
+  padding: 0px 5px;
+}
+h4 > a {
+  color: black;
+  font-weight: 100;
+}
+
+.underHeader > ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+li {
+  padding: 30px 100px;
+  cursor: pointer;
+}
+li:hover {
+  background-color: #eeeeef;
+}

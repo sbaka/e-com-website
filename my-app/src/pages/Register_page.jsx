@@ -1,5 +1,4 @@
 //TODO : ON SUBMIT CHECK IF ALL THE INPUTS ARE VALID
-
 import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
