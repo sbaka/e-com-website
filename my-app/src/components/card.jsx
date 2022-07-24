@@ -7,16 +7,23 @@ class Card extends Component {
   state = {};
   render() {
     return (
-      <figure className="card">
-        {" "}
-        {/*card component not finished*/}
-        <div className="image">
-          <img src={Miki} height="266px" />
-          <FontAwesomeIcon className="slm" icon={faCirclePlus} fontSize={25} />
+      <React.Fragment>
+        <div className="card">
+          <div className="productimage">
+            <span>
+            <FontAwesomeIcon className="iconcard" icon={faCirclePlus} fontSize={25} />
+            </span>
+            <img className="productpic" src={Miki} />
+          </div>
+          <div className="productinfo">
+            <p className="description">LOREM IPSUIM  LOREM IPSUIM </p>
+            <span className="price">2500 DZD</span
+            ><span className="realprice">5000 DZD</span>
+          </div>
         </div>
-        <p>9meja</p>
-        <h5>2000dzd</h5>
-      </figure>
+      </React.Fragment>
+
+
     );
   }
 }

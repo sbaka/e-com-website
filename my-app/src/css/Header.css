@@ -21,7 +21,7 @@ header {
   flex-direction: row;
   align-items: center;
 }
-.icon {
+.iconheader {
   padding: 0px 20px;
 }
 .signin_up {

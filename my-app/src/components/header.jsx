@@ -20,12 +20,12 @@ class Header extends Component {
           </div>
           <div className="headerRight">
             <FontAwesomeIcon
-              className="icon"
+              className="iconheader"
               icon={faMagnifyingGlass}
               fontSize={25}
             />
             <FontAwesomeIcon
-              className="icon"
+              className="iconheader"
               icon={faBagShopping}
               fontSize={25}
             />
