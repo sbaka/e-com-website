@@ -39,7 +39,7 @@ class Header extends Component {
                 fontSize={25}
               />
               <h4 className="links">
-                <a href="/Login">sign up</a>
+                <a href="/Register">sign up</a>
               </h4>
             </div>
           </div>
