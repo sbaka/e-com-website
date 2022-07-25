@@ -2,7 +2,9 @@
   font-family: "Inter", sans-serif;
   margin: 0;
 }
-
+.bars{
+  margin: 15px 25px; /*vertically horizontally*/
+}
 header {
   display: flex;
   flex-direction: row;
@@ -37,16 +39,16 @@ h4 > a {
   font-weight: 100;
 }
 
-.underHeader > ul {
+.ul {
   list-style-type: none;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
-li {
+.li {
   padding: 30px 100px;
   cursor: pointer;
 }
-li:hover {
+.li:hover {
   background-color: #eeeeef;
 }
