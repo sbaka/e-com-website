@@ -16,7 +16,11 @@ class Header extends Component {
       //This can be useful when rendering multiple child elements/components in a single parent component.
       <React.Fragment>
         <header>
-          <FontAwesomeIcon className={styles.bars} icon={faBars} fontSize={25} />
+          <FontAwesomeIcon
+            className={styles.bars}
+            icon={faBars}
+            fontSize={25}
+          />
           <div className={styles.Logo}>
             <img id="Logo" src={Logo} height="70px" alt="" />
           </div>
@@ -46,7 +50,8 @@ class Header extends Component {
             </div>
           </div>
         </header>
-        <div className={styles.underHeader}>{/*categories*/}
+        <div className={styles.underHeader}>
+          {/*categories*/}
           <ul className={styles.ul}>
             <li className={styles.li}>MAN</li>
             <li className={styles.li}>WOMAN</li>

@@ -11,19 +11,21 @@ class Card extends Component {
         <div className="card">
           <div className="productimage">
             <span>
-            <FontAwesomeIcon className="iconcard" icon={faCirclePlus} fontSize={25} />
+              <FontAwesomeIcon
+                className="iconcard"
+                icon={faCirclePlus}
+                fontSize={25}
+              />
             </span>
-            <img className="productpic" src={Miki} />
+            <img className="productpic" src={this.props.img} />
           </div>
           <div className="productinfo">
-            <p className="description">LOREM IPSUIM  LOREM IPSUIM </p>
-            <span className="price">2500 DZD</span
-            ><span className="realprice">5000 DZD</span>
+            <p className="description">{this.props.description}</p>
+            <span className="price">{this.props.promotion} DZD</span>
+            <span className="realprice">{this.props.price} DZD</span>
           </div>
         </div>
       </React.Fragment>
-
-
     );
   }
 }

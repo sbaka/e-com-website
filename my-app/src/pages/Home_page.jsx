@@ -1,15 +1,19 @@
 import { Component } from "react";
 import Header from "../components/header";
 import SideBar from "../components/SideBar";
-
-class App extends Component{
-  render (){
+import Main from "../components/Main";
+import styles from "../css/app.module.css";
+class App extends Component {
+  render() {
     return (
       <div className="App">
         <Header />
-        <SideBar/>
+        <div className={styles.container}>
+          <SideBar />
+          <Main />
+        </div>
       </div>
-    )
+    );
   }
 }
 export default App;
