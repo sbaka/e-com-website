@@ -1,5 +1,6 @@
 .cards {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   padding: 20px 20px;
 }

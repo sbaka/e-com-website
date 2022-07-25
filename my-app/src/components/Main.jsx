@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "./card";
-import styles from "../css/cards.module.css";
+import styles from "../css/main.module.css";
 class Main extends Component {
   state = {
     chemises: [
@@ -21,6 +21,30 @@ class Main extends Component {
         description: "POLO chemise",
         promotion: 3500,
         price: 5000,
+      },
+      {
+        img: "https://www.aigle.com/on/demandware.static/-/Sites-master-akeneo/default/dw5dcf3f07/images/asset/3/0/9/3/3093b19486b8ce08e1069d1f08b5b4653e15d8f9_N9681_1.jpg?frz-v=122",
+        description: "BLACK&WHITE chemise",
+        promotion: 5000,
+        price: 7000,
+      },  
+      {
+        img: "https://www.aigle.com/on/demandware.static/-/Sites-master-akeneo/default/dw5dcf3f07/images/asset/3/0/9/3/3093b19486b8ce08e1069d1f08b5b4653e15d8f9_N9681_1.jpg?frz-v=122",
+        description: "BLACK&WHITE chemise",
+        promotion: 5000,
+        price: 7000,
+      },
+      {
+        img: "https://www.aigle.com/on/demandware.static/-/Sites-master-akeneo/default/dw5dcf3f07/images/asset/3/0/9/3/3093b19486b8ce08e1069d1f08b5b4653e15d8f9_N9681_1.jpg?frz-v=122",
+        description: "BLACK&WHITE chemise",
+        promotion: 5000,
+        price: 7000,
+      },
+      {
+        img: "https://www.aigle.com/on/demandware.static/-/Sites-master-akeneo/default/dw5dcf3f07/images/asset/3/0/9/3/3093b19486b8ce08e1069d1f08b5b4653e15d8f9_N9681_1.jpg?frz-v=122",
+        description: "BLACK&WHITE chemise",
+        promotion: 5000,
+        price: 7000,
       },
       {
         img: "https://www.aigle.com/on/demandware.static/-/Sites-master-akeneo/default/dw5dcf3f07/images/asset/3/0/9/3/3093b19486b8ce08e1069d1f08b5b4653e15d8f9_N9681_1.jpg?frz-v=122",
