@@ -8,9 +8,9 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <div className={styles.container}  >
-        <SideBar />
-        <Main className={styles.item}  />
+        <div className={styles.container}>
+          <SideBar />
+          <Main />
         </div>
       </div>
     );

@@ -27,7 +27,8 @@ class Main extends Component {
         description: "BLACK&WHITE chemise",
         promotion: 5000,
         price: 7000,
-      },  
+      },
+
       {
         img: "https://www.aigle.com/on/demandware.static/-/Sites-master-akeneo/default/dw5dcf3f07/images/asset/3/0/9/3/3093b19486b8ce08e1069d1f08b5b4653e15d8f9_N9681_1.jpg?frz-v=122",
         description: "BLACK&WHITE chemise",
