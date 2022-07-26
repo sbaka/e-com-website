@@ -6,6 +6,7 @@ import Register from "./pages/Register_page";
 import Header from "./components/header";
 import Card from "./components/card";
 import Main from "./components/Main";
+import Bag from "./components/bag";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -18,6 +19,7 @@ root.render(
       <Route path="/Register" element={<Register />} />
       <Route path="/Header" element={<Header />} />
       <Route path="/Main" element={<Main />} />
+      <Route path="/bag" element={<Bag />} />
     </Routes>
   </BrowserRouter>
 );
