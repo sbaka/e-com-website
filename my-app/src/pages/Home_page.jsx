@@ -13,7 +13,6 @@ class App extends Component {
           <SideBar />
           <Main />
         </div>
-       <a href="/Bag" fontSize={30}>CART NOT FINISH YET</a>
       </div>
     );
   }
