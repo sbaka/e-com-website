@@ -9,10 +9,7 @@
   flex-wrap: nowrap;
   justify-content: space-between;
 }
-.space {
-  /*space above filter*/
-  height: 50px;
-}
+
 .sideContainer > h2 {
   font-size: 36px;
 }

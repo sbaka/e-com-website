@@ -7,6 +7,7 @@ import Header from "./components/header";
 import Card from "./components/card";
 import Main from "./components/CardList";
 import Bag from "./components/bag";
+import SortBy from "./components/Sortby";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -20,6 +21,7 @@ root.render(
       <Route path="/Header" element={<Header />} />
       <Route path="/Main" element={<Main />} />
       <Route path="/Bag" element={<Bag />} />
+      <Route path="/SortBy" element={<SortBy />} />
     </Routes>
   </BrowserRouter>
 );

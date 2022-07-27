@@ -8,13 +8,6 @@ import {
 
 import styles from "../css/Bag.module.css"
 
-/* NOT FINAL NEED SOME IMPROVMENT IN CSS BUT GOOD FOR A BEGINING */
-/* 
-1- FIX ZOOM PROBLEMS 
-2- COUNTER PROBLEMS
-3- CSS ADJUSTMENT
-*/
-
 
 class Bag extends Component {
   state = {
@@ -36,10 +29,7 @@ class Bag extends Component {
       quantity: this.state.quantity + -1
     });
   }
-    
- 
-
-
+  
   render() {
     return (
       <div className={styles.bagcontainer} >
