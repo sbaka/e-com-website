@@ -6,8 +6,8 @@ import Register from "./pages/Register_page";
 import Header from "./components/header";
 import Card from "./components/card";
 import Main from "./components/CardList";
-import Bag from "./components/bag";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Cart from "./pages/Cart_page";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -19,7 +19,7 @@ root.render(
       <Route path="/Register" element={<Register />} />
       <Route path="/Header" element={<Header />} />
       <Route path="/Main" element={<Main />} />
-      <Route path="/Bag" element={<Bag />} />
+      <Route path="/Cart" element={<Cart/>} /> 
     </Routes>
   </BrowserRouter>
 );
