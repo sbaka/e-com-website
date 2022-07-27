@@ -36,11 +36,12 @@
     font-weight: bold;
     color: #222222;
   }
+  /*to remove the arrows from the number input */
   input::-webkit-outer-spin-button,
   input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
+  }
   .productcount {
     border: none;
     outline: none;
