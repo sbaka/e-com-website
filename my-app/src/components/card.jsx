@@ -8,23 +8,25 @@ class Card extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="card">
-          <div className="productimage">
-            <span>
-              <FontAwesomeIcon
-                className="iconcard"
-                icon={faCirclePlus}
-                fontSize={25}
-              />
-            </span>
-            <img className="productpic" src={this.props.img} />
+        <a href="/ProductInfo">
+          <div className="card">
+            <div className="productimage">
+              <span>
+                <FontAwesomeIcon
+                  className="iconcard"
+                  icon={faCirclePlus}
+                  fontSize={25}
+                />
+              </span>
+              <img className="productpic" src={this.props.img} />
+            </div>
+            <div className="productinfo">
+              <p className="description">{this.props.description}</p>
+              <span className="price">{this.props.promotion} DZD</span>
+              <span className="realprice">{this.props.price} DZD</span>
+            </div>
           </div>
-          <div className="productinfo">
-            <p className="description">{this.props.description}</p>
-            <span className="price">{this.props.promotion} DZD</span>
-            <span className="realprice">{this.props.price} DZD</span>
-          </div>
-        </div>
+        </a>
       </React.Fragment>
     );
   }
