@@ -64,7 +64,7 @@ class Register extends Component {
     this.setState({ passwordString: event.target.value });
 
     if (event.target.value.length > 0)
-      //show conditions condition
+      //condition to show conditions to be checked
       this.setState({ passwordConditions: true });
     else this.setState({ passwordConditions: false });
 
