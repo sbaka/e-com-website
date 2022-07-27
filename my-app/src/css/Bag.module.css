@@ -29,7 +29,7 @@
 
   .productcarddescription{
     color: #72777A;
-    font-size: 24px;
+    font-size: 26px;
   }
   .productcardprice{
     font-size: 26px;
@@ -43,6 +43,7 @@
   margin: 0;
   }
   .productcount {
+    padding: 0;
     border: none;
     outline: none;
     width: 30px;
@@ -50,9 +51,8 @@
     text-align: center;
     line-height: 30px;
   }
-  .productcounicon{
-    padding-left: 20px;
-    padding-right: 20px;
+  .itemcount {
+    display: flex;
   }
   .productcardrealprice{
     font-size: 26px;

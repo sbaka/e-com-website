@@ -30,10 +30,10 @@ class Bag extends Component {
            <div >
            <p className={styles.productcardprice}>2500DZD</p>
            </div>
-            <div>
-              <FontAwesomeIcon icon={faCircleArrowLeft} className={styles.productcounticon} fontSize={30} />
-              <input type="number" className={styles.productcount} min="1"></input>   {/* PROBLEME INPUT IS TAKING STYLE OF LOGINPAGE.CSS DIDNT FIX IT YET*/}
-              <FontAwesomeIcon icon={faCircleArrowRight} className={styles.productcounticon} fontSize={30} />
+            <div className={styles.itemcount}>
+              <FontAwesomeIcon icon={faCircleArrowLeft} fontSize={30} />
+              <input type="number" className={styles.productcount} defaultValue="1" min="1"></input>  
+              <FontAwesomeIcon icon={faCircleArrowRight} fontSize={30} />
             </div>
             <div>
             <p class={styles.productcardrealprice}>5000DZD</p>
