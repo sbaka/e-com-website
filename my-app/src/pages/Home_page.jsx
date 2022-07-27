@@ -1,8 +1,8 @@
 import { Component } from "react";
 import Header from "../components/header";
 import SideBar from "../components/SideBar";
-import Main from "../components/Main";
-import Bag from "../components/bag";
+import CardList from "../components/CardList";
+
 import styles from "../css/app.module.css";
 class App extends Component {
   render() {
@@ -11,7 +11,7 @@ class App extends Component {
         <Header />
         <div className={styles.container}>
           <SideBar />
-          <Main />
+          <CardList />
         </div>
       </div>
     );

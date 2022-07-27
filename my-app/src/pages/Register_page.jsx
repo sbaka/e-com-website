@@ -1,8 +1,17 @@
 //TODO : ON SUBMIT CHECK IF ALL THE INPUTS ARE VALID
+
+/*
+    TODO : check ta3 confirm password should stay green onblur
+*/
+
+
+
+
 import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
-import "../css/Register_page_style.css";
+import styles from "../css/Register.module.css";
+import loginStyles from "../css/Login.module.css"
 import "https://kit.fontawesome.com/728d58002e.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -59,7 +68,7 @@ class Register extends Component {
       this.setState({ passwordConditions: true });
     else this.setState({ passwordConditions: false });
 
-    if (event.target.value.length >= 8 && !event.target.value.includes(" "))
+    if (event.target.value.length >= 8)
       //the 8 caracters condition
       this.setState({ lengthCondition: true });
     else this.setState({ lengthCondition: false });
@@ -67,7 +76,7 @@ class Register extends Component {
     if (numSymbolReg.test(event.target.value)) {
       //the 8 caracters condition
       this.setState({ numSymbolCondition: true });
-      console.log(event.target.value, numSymbolReg.test(event.target.value));
+      //console.log(event.target.value, numSymbolReg.test(event.target.value));
     } else this.setState({ numSymbolCondition: false });
 
     if (uppercaseReg.test(event.target.value))
@@ -76,12 +85,16 @@ class Register extends Component {
     else this.setState({ uppercaseCondition: false });
   };
 
+
+
   retypeChange = (event) => {
-    console.log(this.state.passwordString);
+    //console.log(this.state.passwordString);
     if (event.target.value == this.state.passwordString)
       this.setState({ retypeValueBool: true });
     else this.setState({ retypeValueBool: false });
   };
+
+
   userChange = (event) => {
     this.setState({ userValue: event.target.value }); //set username value in the state
 
@@ -98,6 +111,10 @@ class Register extends Component {
     //check if the username matches with the regex if yes itshows the green color if no it shows the gray one
     else this.setState({ userAccepted: false });
   };
+
+
+
+
   mailChange = (event) => {
     //same as userChange
     this.setState({ emailValue: event.target.value });
@@ -106,16 +123,19 @@ class Register extends Component {
 
     if (mailReg.test(event.target.value)) {
       this.setState({ emailAccepted: true });
-      console.log(event.target.value);
+      //console.log(event.target.value);
     }
     //check if the username matches with the regex if yes itshows the green color if no it shows the gray one
     else this.setState({ emailAccepted: false });
   };
+
+
+
   render() {
     return (
-      <div className="parent">
-        <div className="container">
-          <button className="return">
+      <div className={loginStyles.parent}>
+        <div className={styles.container}>
+          <button className={loginStyles.return}>
             <FontAwesomeIcon icon={faArrowLeft} fontSize={30} />
           </button>
           <h2>Sign up</h2>
@@ -123,7 +143,7 @@ class Register extends Component {
 
           <br />
 
-          <div className="formGroup">
+          <div className={loginStyles.formGroup}>
             <input
               id="username"
               placeholder="Username"
@@ -137,14 +157,14 @@ class Register extends Component {
               value={this.state.userValue}
               onChange={this.userChange}
             />
-            <label htmlFor="username" className="labelIcon">
+            <label htmlFor="username" className={styles.labelIcon}>
               <FontAwesomeIcon
                 icon={faUser}
                 fontSize={30}
                 color={this.state.user ? "#2c3e50" : "#C3C3C3"}
               />
             </label>
-            <label htmlFor="username" className="RightIcon">
+            <label htmlFor="username" className={styles.RightIcon}>
               {this.state.userValueBool ? (
                 <FontAwesomeIcon
                   icon={faCheck}
@@ -159,7 +179,7 @@ class Register extends Component {
 
           <br />
 
-          <div className="formGroup">
+          <div className={loginStyles.formGroup}>
             <input
               id="email"
               placeholder="E-mail"
@@ -170,14 +190,14 @@ class Register extends Component {
               onChange={this.mailChange}
             />
 
-            <label htmlFor="email" className="labelIcon">
+            <label htmlFor="email" className={styles.labelIcon}>
               <FontAwesomeIcon
                 icon={faAt}
                 fontSize={30}
                 color={this.state.email ? "#2c3e50" : "#C3C3C3"}
               />
             </label>
-            <label htmlFor="email" className="RightIcon">
+            <label htmlFor="email" className={styles.RightIcon}>
               {this.state.emailValueBool ? (
                 <FontAwesomeIcon
                   icon={faCheck}
@@ -192,7 +212,7 @@ class Register extends Component {
 
           <br />
 
-          <div className="formGroup">
+          <div className={loginStyles.formGroup}>
             <input
               type={this.state.eye ? "text" : "password"}
               placeholder="Password"
@@ -200,14 +220,14 @@ class Register extends Component {
               onBlur={() => this.setState({ password: false })}
               onChange={this.passwordChange}
             ></input>
-            <label htmlFor="password" className="labelIcon">
+            <label htmlFor="password" className={styles.labelIcon}>
               <FontAwesomeIcon
                 icon={faUnlock}
                 fontSize={30}
                 color={this.state.password ? "#2c3e50" : "#C3C3C3"}
               />
             </label>
-            <label htmlFor="password" className="RightIcon eye">
+            <label htmlFor="password" className={loginStyles.eye}>
               <FontAwesomeIcon
                 icon={this.state.eye ? faEye : faEyeSlash}
                 fontSize={30}
@@ -253,9 +273,8 @@ class Register extends Component {
           )}
           <br />
 
-          <br />
 
-          <div className="formGroup">
+          <div className={loginStyles.formGroup}>
             <input
               type="password"
               placeholder="Retype your password"
@@ -263,14 +282,14 @@ class Register extends Component {
               onBlur={() => this.setState({ retype: false })}
               onChange={this.retypeChange}
             ></input>
-            <label htmlFor="password" className="labelIcon">
+            <label htmlFor="password" className={styles.labelIcon}>
               <FontAwesomeIcon
                 icon={faUnlock}
                 fontSize={30}
                 color={this.state.retype ? "#2c3e50" : "#C3C3C3"}
               />
             </label>
-            <label htmlFor="password" className="RightIcon">
+            <label htmlFor="password" className={styles.RightIcon}>
               {this.state.retypeValueBool ? (
                 <FontAwesomeIcon
                   icon={faCheck}
@@ -283,14 +302,14 @@ class Register extends Component {
             </label>
           </div>
 
-          <div className="signUp">
+          <div className={styles.signUp}>
             <p>
               Already a member ? <a href="/Login">Sign in</a>
             </p>
           </div>
 
-          <div className="bottomDiv">
-            <button type="submit" className="submitBtn">
+          <div className={styles.bottomDiv}>
+            <button type="submit" className={styles.submitBtn}>
               <p>Sign up </p>
               <img id="arrow" src={arrowPic} alt="" />
             </button>

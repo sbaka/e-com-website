@@ -5,7 +5,7 @@ import Login from "./pages/Login_page";
 import Register from "./pages/Register_page";
 import Header from "./components/header";
 import Card from "./components/card";
-import Main from "./components/Main";
+import Main from "./components/CardList";
 import Bag from "./components/bag";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "./card";
 import styles from "../css/main.module.css";
-class Main extends Component {
+class CardList extends Component {
   state = {
     chemises: [
       {
@@ -71,4 +71,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default CardList;
