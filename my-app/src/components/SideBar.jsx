@@ -1,4 +1,5 @@
 import { Component } from "react";
+import MultiRangeSlider from "../components/multiSlider"
 import styles from "../css/SideBar.module.css"
 class SideBar extends Component {
     render() {
@@ -53,7 +54,11 @@ class SideBar extends Component {
                 <hr className={styles.hr} />
                 <br />
                 <h4>Price</h4>
-                <input type="range" className={styles.range} name="price" min="0" max="10"></input>
+                <MultiRangeSlider
+                    min={0}
+                    max={1000}
+                    onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
+                />
             </div>
         )
     }

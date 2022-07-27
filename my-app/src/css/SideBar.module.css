@@ -16,15 +16,16 @@
 .sideContainer > h2 {
   font-size: 36px;
 }
-.sideContainer > ul > h4 {
+.sideContainer > ul > h4 ,.sideContainer > h4{
   font-size: 28px;
   color: #222222;
 }
 .sideContainer > ul {
   list-style-type: none;
+  padding-left: 0%;
 }
 .sideContainer > ul > li {
-  margin: 15px;
+  margin: 15px 0px;
 }
 .label {
   font-size: 22px;
