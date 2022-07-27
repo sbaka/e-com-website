@@ -36,12 +36,18 @@
     font-weight: bold;
     color: #222222;
   }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
   .productcount {
+    border: none;
+    outline: none;
     width: 30px;
     height: 30px;
     text-align: center;
     line-height: 30px;
-    background: #f5f5ff;
   }
   .productcounicon{
     padding-left: 20px;

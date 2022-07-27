@@ -30,7 +30,7 @@ class Header extends Component {
               icon={faMagnifyingGlass}
               fontSize={25}
             />
-            <a href="/Register">
+            <a href="/Bag">
               <FontAwesomeIcon
                 className={styles.iconheader}
                 icon={faBagShopping}

@@ -19,7 +19,7 @@ root.render(
       <Route path="/Register" element={<Register />} />
       <Route path="/Header" element={<Header />} />
       <Route path="/Main" element={<Main />} />
-      <Route path="/bag" element={<Bag />} />
+      <Route path="/Bag" element={<Bag />} />
     </Routes>
   </BrowserRouter>
 );

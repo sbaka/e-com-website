@@ -32,7 +32,7 @@ class Bag extends Component {
            </div>
             <div>
               <FontAwesomeIcon icon={faCircleArrowLeft} className={styles.productcounticon} fontSize={30} />
-              <input type="number" className={styles.productcount} value="1"></input>   {/* PROBLEME INPUT IS TAKING STYLE OF LOGINPAGE.CSS DIDNT FIX IT YET*/}
+              <input type="number" className={styles.productcount} min="1"></input>   {/* PROBLEME INPUT IS TAKING STYLE OF LOGINPAGE.CSS DIDNT FIX IT YET*/}
               <FontAwesomeIcon icon={faCircleArrowRight} className={styles.productcounticon} fontSize={30} />
             </div>
             <div>
