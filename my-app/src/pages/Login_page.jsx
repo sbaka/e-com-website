@@ -2,7 +2,7 @@ import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
 import React, { Component } from "react";
-import "../css/Login_page_style.css"; //css
+import styles from "../css/Login.module.css"; //css
 import "https://kit.fontawesome.com/728d58002e.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -26,22 +26,23 @@ class Login extends Component {
   };
   render() {
     return (
-      <div className="parent">
-        <div className="container_login">
-          <button className="return">
+      <div className={styles.parent}>
+        <div className={styles.container_login}>
+          <button className={styles.return}>
             <FontAwesomeIcon icon={faArrowLeft} fontSize={30} />
           </button>
           <h2>Sign in</h2>
           <h4>Fill in the form bellow to continue</h4>
           <br />
-          <div className="formGroup">
+          <div className={styles.formGroup}>
+            {/*to change color onfocus-onblur */}
             <input
               id="email"
               placeholder="E-mail"
               onFocus={() => this.setState({ email: true })}
               onBlur={() => this.setState({ email: false })}
             />
-            <label htmlFor="email" className="labelIcon">
+            <label htmlFor="email" className={styles.labelIcon}>
               <FontAwesomeIcon
                 icon={faAt}
                 fontSize={30}
@@ -52,26 +53,26 @@ class Login extends Component {
 
           <br />
 
-          <div className="formGroup">
+          <div className={styles.formGroup}>
             <input
               type={this.state.eye ? "text" : "password"}
               placeholder="Password"
               onFocus={() => this.setState({ password: true })}
               onBlur={() => this.setState({ password: false })}
             />
-            <label htmlFor="password" className="labelIcon">
+            <label htmlFor="password" className={styles.labelIcon}>
               <FontAwesomeIcon
                 icon={faUnlock}
                 fontSize={30}
                 color={this.state.password ? "#2c3e50" : "#C3C3C3"}
               />
             </label>
-            <label className="eye">
+            <label className={styles.eye}>
               <FontAwesomeIcon
                 icon={this.state.eye ? faEye : faEyeSlash}
                 fontSize={30}
                 color={this.state.eye ? "#2c3e50" : "#C3C3C3"}
-                className="eyeicon"
+                className={styles.eyeicon}
                 onClick={this.ChangePasswordToText}
               />
             </label>
@@ -79,7 +80,7 @@ class Login extends Component {
 
           <br />
 
-          <div className="signUp">
+          <div className={styles.signUp}>
             <p>
               You don't have an account yet ? <a href="/Register">Sign up</a>
             </p>
@@ -87,8 +88,8 @@ class Login extends Component {
 
           <br />
 
-          <div className="bottomDiv">
-            <button type="submit" className="submitBtn">
+          <div className={styles.bottomDiv}>
+            <button type="submit" className={styles.submitBtn}>
               <p>Sign in </p>
               <img id="arrow" src={arrowPic} alt="" />
             </button>

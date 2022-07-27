@@ -24,7 +24,7 @@
 }
 /* all of them have pointer cursor, btns and those 2 continue with google/fb*/
 button,
-div > img {
+bottomDiv > div > img {
   cursor: pointer;
 }
 .return {
@@ -43,14 +43,14 @@ h4 {
   font-size: 20px;
 }
 
-input {
+.formGroup > input {
   border-width: 0px 0px 1px 0px;
   border-color: #c3c3c3;
   padding: 0 0 10px 65px; /*top right bottom left*/
   width: 80%;
   font-size: 26px;
 }
-input:focus {
+.formGroup > input:focus {
   outline: none;
 }
 .labelIcon {
@@ -75,7 +75,7 @@ input:focus {
   padding-right: 45px;
 }
 
-a {
+.signUp > a {
   color: #2db3ff;
   font-weight: 600;
   text-decoration: none;
