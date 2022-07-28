@@ -31,9 +31,7 @@ class Header extends Component {
               fontSize={25}
             />
 
-
             {/* TODO add bag list to the card */}
-
 
             <a href="/Cart">
               <FontAwesomeIcon

@@ -6,7 +6,7 @@ import Register from "./pages/Register_page";
 import Header from "./components/header";
 import Card from "./components/card";
 import Main from "./components/CardList";
-import BagList from "./components/BagList";
+import ListBag from "./components/ListBag";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./pages/Cart_page";
 
@@ -20,8 +20,8 @@ root.render(
       <Route path="/Register" element={<Register />} />
       <Route path="/Header" element={<Header />} />
       <Route path="/Main" element={<Main />} />
-      <Route path="/BagList" element={<BagList />} />
+      <Route path="/ListBag" element={<ListBag />} />
       <Route path="/Cart" element={<Cart />} />
-    </Routes >
-  </BrowserRouter >
+    </Routes>
+  </BrowserRouter>
 );

@@ -2,7 +2,7 @@
   font-family: "Inter", sans-serif;
   margin: 0;
 }
-.bars{
+.bars {
   margin: 15px 25px; /*vertically horizontally*/
 }
 header {
@@ -44,6 +44,7 @@ h4 > a {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  padding: 0px;
 }
 .li {
   padding: 30px 100px;
