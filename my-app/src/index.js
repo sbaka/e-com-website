@@ -9,6 +9,8 @@ import Main from "./components/CardList";
 import Bag from "./components/Bag";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BagList from "./components/BagList";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Cart from "./pages/Cart_page";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +24,7 @@ root.render(
       <Route path="/Main" element={<Main />} />
       <Route path="/Bag" element={<Bag />} />
       <Route path="/BagList" element={<BagList />} />
-    </Routes>
-  </BrowserRouter>
+      <Route path="/Cart" element={<Cart />} />
+    </Routes >
+  </BrowserRouter >
 );

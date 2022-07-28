@@ -5,27 +5,27 @@ class SideBar extends Component {
     render() {
         return (
             <div className={styles.sideContainer}>
-                <div className={styles.space}></div>
+                
                 <h2>Filter</h2>
                 <hr className={styles.hr} />
                 <br />
                 <ul>
                     <h4>Categories</h4>
                     <li>
-                        <input type="checkbox" name="tshirt" className={styles.sideElt} /> 
-                        <label className={styles.label} for="tshirt">T-shirt</label>
+                        <input type="checkbox" name="tshirt" className={styles.sideElt} />
+                        <label className={styles.label} htmlFor="tshirt">T-shirt</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="Chemises" className={styles.sideElt} /> 
-                        <label className={styles.label} for="Chemises">Chemises</label>
+                        <input type="checkbox" name="Chemises" className={styles.sideElt} />
+                        <label className={styles.label} htmlFor="Chemises">Chemises</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="Shorts" className={styles.sideElt} /> 
-                        <label className={styles.label} for="Shorts">Shorts</label>
+                        <input type="checkbox" name="Shorts" className={styles.sideElt} />
+                        <label className={styles.label} htmlFor="Shorts">Shorts</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="Pantalons" className={styles.sideElt} /> 
-                        <label className={styles.label} for="Pantalons">Pantalons</label>
+                        <input type="checkbox" name="Pantalons" className={styles.sideElt} />
+                        <label className={styles.label} htmlFor="Pantalons">Pantalons</label>
                     </li>
                 </ul>
                 <br />
@@ -34,20 +34,20 @@ class SideBar extends Component {
                 <ul>
                     <h4>Brands</h4>
                     <li>
-                        <input type="checkbox" name="Nike" className={styles.sideElt} /> 
-                        <label className={styles.label} for="tshirt">Nike</label>
+                        <input type="checkbox" name="Nike" className={styles.sideElt} />
+                        <label className={styles.label} htmlFor="tshirt">Nike</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="Adidas" className={styles.sideElt} /> 
-                        <label className={styles.label} for="Chemises">Adidas</label>
+                        <input type="checkbox" name="Adidas" className={styles.sideElt} />
+                        <label className={styles.label} htmlFor="Chemises">Adidas</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="Puma" className={styles.sideElt} /> 
-                        <label className={styles.label} for="Shorts">Puma</label>
+                        <input type="checkbox" name="Puma" className={styles.sideElt} />
+                        <label className={styles.label} htmlFor="Shorts">Puma</label>
                     </li>
                     <li>
-                        <input type="checkbox" name="Pantalons" className={styles.sideElt} /> 
-                        <label className={styles.label} for="Pantalons">Zara</label>
+                        <input type="checkbox" name="Pantalons" className={styles.sideElt} />
+                        <label className={styles.label} htmlFor="Pantalons">Zara</label>
                     </li>
                 </ul>
                 <br />
@@ -57,7 +57,7 @@ class SideBar extends Component {
                 <MultiRangeSlider
                     min={0}
                     max={1000}
-                    onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
+                    onChange={({ min, max }) => ""}
                 />
             </div>
         )
