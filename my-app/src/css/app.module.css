@@ -3,3 +3,20 @@
   flex-direction: row;
   justify-content: space-around;
 }
+.up{
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 85%;
+}
+.up > h1{
+  font-size: 36px;
+  font-weight: bold;
+  padding-left: 28px;
+}
+.space {
+  /*space above filter*/
+  height: 50px;
+  width: 100%;
+
+}

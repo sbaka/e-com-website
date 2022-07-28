@@ -5,7 +5,7 @@ class SideBar extends Component {
     render() {
         return (
             <div className={styles.sideContainer}>
-                <div className={styles.space}></div>
+                
                 <h2>Filter</h2>
                 <hr className={styles.hr} />
                 <br />
