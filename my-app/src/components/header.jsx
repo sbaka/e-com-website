@@ -30,8 +30,12 @@ class Header extends Component {
               icon={faMagnifyingGlass}
               fontSize={25}
             />
+
+
             {/* TODO add bag list to the card */}
-            <a href="/BagList">
+
+
+            <a href="/Cart">
               <FontAwesomeIcon
                 className={styles.iconheader}
                 icon={faBagShopping}

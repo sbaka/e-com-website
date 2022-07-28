@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Bag from "./Bag";
+import Bag from "./CartItem";
 import styles from "../css/BagList.module.css";
 class BagList extends Component {
   state = {
