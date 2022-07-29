@@ -89,7 +89,7 @@ class Register extends Component {
 
   retypeChange = (event) => {
     //console.log(this.state.passwordString);
-    if (event.target.value == this.state.passwordString)
+    if (event.target.value === this.state.passwordString)
       this.setState({ retypeValueBool: true });
     else this.setState({ retypeValueBool: false });
   };
@@ -98,7 +98,7 @@ class Register extends Component {
   userChange = (event) => {
     this.setState({ userValue: event.target.value }); //set username value in the state
 
-    if (event.target.value == 0)
+    if (event.target.value === 0)
       this.setState({
         userValueBool: false,
       });
@@ -118,7 +118,7 @@ class Register extends Component {
   mailChange = (event) => {
     //same as userChange
     this.setState({ emailValue: event.target.value });
-    if (event.target.value == 0) this.setState({ emailValueBool: false });
+    if (event.target.value === 0) this.setState({ emailValueBool: false });
     else this.setState({ emailValueBool: true });
 
     if (mailReg.test(event.target.value)) {
