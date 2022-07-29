@@ -1,6 +1,64 @@
-import {Component} from "react";
+import {Component, useState} from "react";
 import {productData} from "../data/dummyProducts" ;
 import style from "../css/productpage.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faChevronRight,
+    faChevronLeft,
+  } from "@fortawesome/free-solid-svg-icons";
+
+
+const slides=productData.chemises
+const ImageSlider=({Slides}) =>{
+    const [currentIndex , setCurrentIndex] = useState(0)
+    const PreviousImage =() =>{
+        let newIndex=0
+        if(currentIndex===0){
+            setCurrentIndex(productData.chemises.length-1)
+        }
+        else{
+            setCurrentIndex(currentIndex-1)
+        } 
+        console.log(currentIndex)
+    }
+    const NextImage =() =>{
+        let newIndex=0
+        if(currentIndex===productData.chemises.length-1){
+            setCurrentIndex(0)
+            
+        }
+        else{
+            setCurrentIndex(currentIndex+1)
+        }
+        console.log(currentIndex)
+    }
+
+    return(
+    <div className={style.pics}>{/*product pictures*/} 
+        <img className={style.mainpic} src={productData.chemises[currentIndex].img} />
+        <div className={style.subPicContainer}>
+            <FontAwesomeIcon 
+                className={style.arrows}
+                icon={faChevronLeft} 
+                fontSize={25}
+                onClick={PreviousImage}
+            />
+            <img className={style.secondarypics} src={productData.chemises[currentIndex+1].img} />
+            <img className={style.secondarypics} src={productData.chemises[currentIndex+2].img} />
+            
+            <img className={style.secondarypics} src={productData.chemises[currentIndex+3].img} />
+            <FontAwesomeIcon 
+                className={style.arrows}
+                icon={faChevronRight}
+                fontSize={25}
+                onClick={NextImage}
+            />
+        </div>
+    </div>
+    )
+}
+
+
 
 class ProductInfo extends Component{
     render(){
@@ -33,14 +91,7 @@ class ProductInfo extends Component{
                     </p>
                 </div>
             </div>
-            <div className={style.pics}>{/*product pictures*/} 
-                <img className={style.mainpic} src={productData.chemises[0].img} />
-                <div className={style.subPicContainer}>
-                    <img className={style.secondarypics} src={productData.chemises[0].img} />
-                    <img className={style.secondarypics} src={productData.chemises[0].img} />
-                    <img className={style.secondarypics} src={productData.chemises[0].img} />
-                </div>
-            </div>
+            <ImageSlider Slides={slides}/>
             <div className={style.availability}>{/*what sizes and colors are available*/} 
                 <div>
                     <h3>SIZES AVAILABLE</h3>

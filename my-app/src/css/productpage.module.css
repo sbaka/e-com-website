@@ -28,6 +28,7 @@ h3 {
     width: 70%;
     height: auto;
     padding: 10px 50px;
+    cursor: zoom-in;
 }
 .subPicContainer{
     display: flex;
@@ -40,6 +41,7 @@ h3 {
 .secondarypics{
     width: 10%;
     height: auto;
+    cursor: pointer;
 }
 .availability{
     width: 30%;
@@ -76,4 +78,7 @@ h3 {
     color: #ecf0f1;
     font-size: 21px;
     margin: 15px 0px;
+}
+.arrows{
+    cursor: pointer;
 }
