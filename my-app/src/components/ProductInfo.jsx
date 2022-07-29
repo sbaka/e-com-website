@@ -1,65 +1,9 @@
-import {Component, useState} from "react";
+import React from "react";
 import {productData} from "../data/dummyProducts" ;
 import style from "../css/productpage.module.css";
 import AliceCarousel from 'react-alice-carousel';
 import 'react-alice-carousel/lib/alice-carousel.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faChevronRight,
-    faChevronLeft,
-  } from "@fortawesome/free-solid-svg-icons";
-  import '../css/alice-carousel.css'
-
-
-//const slides=productData.chemises
-//const ImageSlider=({Slides}) =>{
-//    const [currentIndex , setCurrentIndex] = useState(0)
-//    const PreviousImage =() =>{
-//        let newIndex=0
-//        if(currentIndex===0){
-//            setCurrentIndex(slides.length-1)
-//        }
-//        else{
-//            setCurrentIndex(currentIndex-1)
-//        } 
-//        console.log(currentIndex)
-//    }
-//    const NextImage =() =>{
-//        let newIndex=0
-//        if(currentIndex===slides.length-1){
-//            setCurrentIndex(0)
-//            
-//        }
-//        else{
-//            setCurrentIndex(currentIndex+1)
-//        }
-//        console.log(currentIndex)
-//    }
-//
-//    return(
-//    <div className={style.pics}>{/*product pictures*/} 
-//        <img className={style.mainpic} src={productData.chemises[currentIndex].img} />
-//        <div className={style.subPicContainer}>
-//            <FontAwesomeIcon 
-//                className={style.arrows}
-//                icon={faChevronLeft} 
-//                fontSize={25}
-//                onClick={PreviousImage}
-//            />
-//            <img className={style.secondarypics} src={productData.chemises[currentIndex+1].img} />
-//            <img className={style.secondarypics} src={productData.chemises[currentIndex+2].img} />
-//            
-//            <img className={style.secondarypics} src={productData.chemises[currentIndex+3].img} />
-//            <FontAwesomeIcon 
-//                className={style.arrows}
-//                icon={faChevronRight}
-//                fontSize={25}
-//                onClick={NextImage}
-//            />
-//        </div>
-//    </div>
-//    )
-//}
+import '../css/alice-carousel.css'
 
 const items = [
     <img src={productData.chemises[0].img}  role="presentation" />,
@@ -70,7 +14,7 @@ const items = [
 
 
 
-class ProductInfo extends Component{
+class ProductInfo extends React.Component{
     render(){
         return(
         <div className={style.container}>    
@@ -101,7 +45,7 @@ class ProductInfo extends Component{
                     </p>
                 </div>
             </div>
-            
+            {/* more info come here: https://www.npmjs.com/package/react-alice-carousel */}
             <AliceCarousel mouseTracking items={items} />
 
             <div className={style.availability}>{/*what sizes and colors are available*/} 
