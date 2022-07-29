@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleArrowRight,
   faCircleArrowLeft,
-  faCircleXmark,
+  faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "../css/CartItem.module.css";
@@ -75,9 +75,10 @@ class CartItem extends Component {
           </div>
           <div>
             <FontAwesomeIcon
-              icon={faCircleXmark}
+              icon={faXmark}
               className={styles.bagItemDelete}
               fontSize={30}
+              fontWeight={100}
             />
           </div>
         </div>
