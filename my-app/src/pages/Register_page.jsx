@@ -25,12 +25,26 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
+import {useNavigate} from "react-router-dom";
 
 const numSymbolReg = /([0-9]|[#?!@$%^/&*-])/;
 const uppercaseReg = /([A-Z])/;
 const userNameReg =
   /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/;
 const mailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+function ReturnButton(){
+  const navigate = useNavigate();
+    return (
+      <button className={loginStyles.return} onClick={() => navigate(-1)}
+        >
+          <FontAwesomeIcon icon={faArrowLeft} fontSize={30} />
+      </button>
+    );
+}
+
+
 class Register extends Component {
   state = {
     /*state for icons highlight */
@@ -136,9 +150,7 @@ class Register extends Component {
       <div className={styles.parent}>
           <div className={styles.container}>
             <div className={styles.formContainer}>
-              <button className={loginStyles.return}>
-                <FontAwesomeIcon icon={faArrowLeft} fontSize={30} />
-              </button>
+              <ReturnButton/>
               <h2>Sign up</h2>
               <h4>Fill in the form bellow to continue</h4>
 

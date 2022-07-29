@@ -5,23 +5,31 @@
 }
 .parent {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
+  flex-direction: row;
 }
 .container_login {
   width: 600px;
-  height: 650px;
+  height: 65%;
+  
   box-shadow: 5px 10px 10px 5px #0000002b;
   border-radius: 15px;
-  display: flex;
-  justify-content: space-evenly; /* to control main axis*/
-  align-items: flex-start; /* to control cross axis*/
-  flex-direction: column;
-  padding-left: 45px;
   margin: 55px;
 }
+.formContainer{
+  height: 75%;
+  display: flex;
+  justify-content: space-evenly;  /* to control main axis*/
+  align-items: flex-start;  /* to control cross axis*/
+  flex-direction: column;
+  padding-left: 45px;
+}
+
+
+
 /* all of them have pointer cursor, btns and those 2 continue with google/fb*/
 button,
 bottomDiv > div > img {
@@ -71,8 +79,8 @@ h4 {
   width: 90%;
 }
 .signUp {
-  align-self: center;
-  padding-right: 45px;
+  text-align: center;
+  margin-bottom: 20px ;
 }
 
 .signUp > p> a {
@@ -97,10 +105,10 @@ h4 {
 }
 
 .bottomDiv {
-  width: 100%;
-  padding-right: 45px;
+  width: 80%;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  margin: 0 45px;
 }
