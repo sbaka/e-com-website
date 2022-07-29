@@ -7,12 +7,11 @@
   /* outSide container */
   width: 100%;
   padding: 20px;
-  margin: 60px;
+  margin-bottom: 30px;
   border-radius: 5px;
   border: 1px solid #d8d8d8;
   background-color: #fff;
 }
-
 .bagItem {
   /*inside container*/
   width: 100%;
@@ -22,7 +21,7 @@
 }
 /* containes the image and the title*/
 .leftSideBag {
-  width: 25%;
+  width: 28%;
   display: flex;
   flex-direction: row;
   align-items: center;

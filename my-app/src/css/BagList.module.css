@@ -1,6 +1,5 @@
 .bags {
   display: flex;
   flex-direction: column;
-  width: 50%;
-  padding: 20px 20px;
+  padding-right:  20px;
 }
