@@ -1,4 +1,4 @@
-import { Component } from "react";
+import React from "react";
 import dahabiaLogo from "../assets/eddahabia.svg";
 import cibLogo from "../assets/CIB.svg";
 import emptyLogo from "../assets/Rectangle.svg";
@@ -16,7 +16,7 @@ function CardComponent(props) {
     </div>
   );
 }
-class OrderInfo extends Component {
+class OrderInfo extends React.Component {
   render() {
     return (
       <div className={styles.orderContainer}>
