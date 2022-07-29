@@ -14,7 +14,7 @@ const ImageSlider=({Slides}) =>{
     const PreviousImage =() =>{
         let newIndex=0
         if(currentIndex===0){
-            setCurrentIndex(productData.chemises.length-1)
+            setCurrentIndex(slides.length-1)
         }
         else{
             setCurrentIndex(currentIndex-1)
@@ -23,7 +23,7 @@ const ImageSlider=({Slides}) =>{
     }
     const NextImage =() =>{
         let newIndex=0
-        if(currentIndex===productData.chemises.length-1){
+        if(currentIndex===slides.length-1){
             setCurrentIndex(0)
             
         }
