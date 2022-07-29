@@ -22,7 +22,7 @@ class Cart extends Component {
           <div className={styles.items}>
             <h2 style={{"paddingBottom":"20px"}}>My Cart</h2>
             <Scrollbars 
-            style={{ width: "100%", height: 600}}
+            style={{ width: "100%", height: "87%"}}
             autoHide
             >
             <div style={{ width: "93%"}} >
