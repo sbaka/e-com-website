@@ -1,6 +1,6 @@
 .container {
     display: flex;
-    
+    padding: 25px;
 }
 .info {
     width : 28%; 
@@ -18,10 +18,10 @@ h3 {
     padding: 20px 0px; 
 }
 .pics{
-    align-items: center;
     height: 100%;
     width: 50%;
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }
 .mainpic{
@@ -29,10 +29,17 @@ h3 {
     height: auto;
     padding: 10px 50px;
 }
+.subPicContainer{
+    display: flex;
+    width: 100%;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
 .secondarypics{
     width: 10%;
     height: auto;
-    padding: 10px 15px 10px 100px;
 }
 .availability{
     width: 30%;
@@ -61,12 +68,12 @@ h3 {
     padding: 15px 0px ;
 }
 .purchase > button {
-    width: 200px;
+    width: 260px;
     height: 55px;
-    font-size: 21px;
     border-color: transparent;
     border-radius: 15px;
     background-color: #34495e;
     color: #ecf0f1;
+    font-size: 21px;
     margin: 15px 0px;
-  }
+}

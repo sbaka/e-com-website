@@ -10,28 +10,36 @@ class ProductInfo extends Component{
                 <div>
                     <p>Homme / Chemises</p>
                     <h3>{productData.chemises[0].description}</h3>
-                    <h4>{productData.chemises[0].promotion}</h4>
+                    <h4>{productData.chemises[0].promotion} DZD</h4>
                     
                 </div>
                 <div>
                     <hr className={style.hr}/>
                     <h3>DESCRIPTION</h3>
-                    <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-                    lorem ipsum lorem ipsum lorem ipsum </p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Veniam excepturi, labore nam molestiae ab deserunt, 
+                        assumenda illum sequi totam earum nobis voluptas veritatis odio quaerat 
+                        maxime natus pariatur inventore? Natus? 
+                    </p>
                     
                 </div>
                 <div className={style.delivery}>
                     <hr className={style.hr}/>
                     <h3>DELIVERY</h3>
-                    <p>lorem ipsum lorem ipsum lorem ipsum lorem ipsum lorem ipsum
-                    lorem ipsum lorem ipsum lorem ipsum </p>
+                    <p>
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. 
+                        Temporibus aut impedit corporis inventore quide
+                    </p>
                 </div>
             </div>
             <div className={style.pics}>{/*product pictures*/} 
                 <img className={style.mainpic} src={productData.chemises[0].img} />
-                <img className={style.secondarypics} src={productData.chemises[0].img} />
-                <img className={style.secondarypics} src={productData.chemises[0].img} />
-                <img className={style.secondarypics} src={productData.chemises[0].img} />
+                <div className={style.subPicContainer}>
+                    <img className={style.secondarypics} src={productData.chemises[0].img} />
+                    <img className={style.secondarypics} src={productData.chemises[0].img} />
+                    <img className={style.secondarypics} src={productData.chemises[0].img} />
+                </div>
             </div>
             <div className={style.availability}>{/*what sizes and colors are available*/} 
                 <div>

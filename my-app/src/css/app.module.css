@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   padding: 0px 20px;
+  width: 90%;
 }
 .up > h1 {
   font-size: 36px;

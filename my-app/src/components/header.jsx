@@ -47,7 +47,7 @@ class Header extends Component {
                 <a href="/Login">sign in</a>
               </h4>
               <FontAwesomeIcon
-                className={styles.links}
+                //hada  => ||
                 icon={faGripLinesVertical}
                 fontSize={25}
               />

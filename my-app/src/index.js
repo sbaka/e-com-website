@@ -1,5 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+
+import "./css/index.css"
+
+
 import App from "./pages/Home_page";
 import Login from "./pages/Login_page";
 import Register from "./pages/Register_page";
