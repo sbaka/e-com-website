@@ -9,6 +9,8 @@ import Main from "./components/CardList";
 import ListBag from "./components/ListBag";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cart from "./pages/Cart_page";
+import Product from "./pages/Product_page";
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +24,7 @@ root.render(
       <Route path="/Main" element={<Main />} />
       <Route path="/ListBag" element={<ListBag />} />
       <Route path="/Cart" element={<Cart />} />
+      <Route path="/ProductInfo" element={<Product />} />
     </Routes>
   </BrowserRouter>
 );

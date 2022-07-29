@@ -1,4 +1,4 @@
-productData = {
+let productData = {
   chemises: [
     {
       img: "https://static.galerieslafayette.com/media/3004119/300411997486/G_300411997486_60_360x393_1.jpg",
@@ -51,4 +51,4 @@ productData = {
     },
   ],
 };
-export { productData };
+export { productData }
