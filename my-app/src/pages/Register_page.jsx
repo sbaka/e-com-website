@@ -133,175 +133,176 @@ class Register extends Component {
 
   render() {
     return (
-      <div className={loginStyles.parent}>
-        <div className={styles.container}>
-          <button className={loginStyles.return}>
-            <FontAwesomeIcon icon={faArrowLeft} fontSize={30} />
-          </button>
-          <h2>Sign up</h2>
-          <h4>Fill in the form bellow to continue</h4>
+      <div className={styles.parent}>
+          <div className={styles.container}>
+            <div className={styles.formContainer}>
+              <button className={loginStyles.return}>
+                <FontAwesomeIcon icon={faArrowLeft} fontSize={30} />
+              </button>
+              <h2>Sign up</h2>
+              <h4>Fill in the form bellow to continue</h4>
 
-          <br />
+              <br />
 
-          <div className={loginStyles.formGroup}>
-            <input
-              id="username"
-              placeholder="Username"
-              autoComplete="off"
-              onFocus={() =>
-                this.setState({ user: true })
-              } /*user icon highlight added*/
-              onBlur={() =>
-                this.setState({ user: false })
-              } /*user icon highlight removed */
-              value={this.state.userValue}
-              onChange={this.userChange}
-            />
-            <label htmlFor="username" className={styles.labelIcon}>
-              <FontAwesomeIcon
-                icon={faUser}
-                fontSize={30}
-                color={this.state.user ? "#2c3e50" : "#C3C3C3"}
-              />
-            </label>
-            <label htmlFor="username" className={styles.RightIcon}>
-              {this.state.userValueBool ? (
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  fontSize={30}
-                  color={this.state.userAccepted ? "green" : "#C3C3C3"}
+              <div className={loginStyles.formGroup}>
+                <input
+                  id="username"
+                  placeholder="Username"
+                  autoComplete="off"
+                  onFocus={() =>
+                    this.setState({ user: true })
+                  } /*user icon highlight added*/
+                  onBlur={() =>
+                    this.setState({ user: false })
+                  } /*user icon highlight removed */
+                  value={this.state.userValue}
+                  onChange={this.userChange}
                 />
+                <label htmlFor="username" className={styles.labelIcon}>
+                  <FontAwesomeIcon
+                    icon={faUser}
+                    fontSize={30}
+                    color={this.state.user ? "#2c3e50" : "#C3C3C3"}
+                  />
+                </label>
+                <label htmlFor="username" className={styles.RightIcon}>
+                  {this.state.userValueBool ? (
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      fontSize={30}
+                      color={this.state.userAccepted ? "green" : "#C3C3C3"}
+                    />
+                  ) : (
+                    ""
+                  )}
+                </label>
+              </div>
+
+              <br />
+
+              <div className={loginStyles.formGroup}>
+                <input
+                  id="email"
+                  placeholder="E-mail"
+                  autoComplete="off"
+                  onFocus={() => this.setState({ email: true })}
+                  onBlur={() => this.setState({ email: false })}
+                  value={this.state.emailValue}
+                  onChange={this.mailChange}
+                />
+
+                <label htmlFor="email" className={styles.labelIcon}>
+                  <FontAwesomeIcon
+                    icon={faAt}
+                    fontSize={30}
+                    color={this.state.email ? "#2c3e50" : "#C3C3C3"}
+                  />
+                </label>
+                <label htmlFor="email" className={styles.RightIcon}>
+                  {this.state.emailValueBool ? (
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      fontSize={30}
+                      color={this.state.emailAccepted ? "green" : "#C3C3C3"}
+                    />
+                  ) : (
+                    ""
+                  )}
+                </label>
+              </div>
+
+              <br />
+
+              <div className={loginStyles.formGroup}>
+                <input
+                  type={this.state.eye ? "text" : "password"}
+                  placeholder="Password"
+                  onFocus={() => this.setState({ password: true })}
+                  onBlur={() => this.setState({ password: false })}
+                  onChange={this.passwordChange}
+                ></input>
+                <label htmlFor="password" className={styles.labelIcon}>
+                  <FontAwesomeIcon
+                    icon={faUnlock}
+                    fontSize={30}
+                    color={this.state.password ? "#2c3e50" : "#C3C3C3"}
+                  />
+                </label>
+                <label htmlFor="password" className={loginStyles.eye}>
+                  <FontAwesomeIcon
+                    icon={this.state.eye ? faEye : faEyeSlash}
+                    fontSize={30}
+                    color={this.state.eye ? "#2c3e50" : "#C3C3C3"}
+                    onClick={this.ChangePasswordToText}
+                  />
+                </label>
+              </div>
+
+              {this.state.passwordConditions ? (
+                <div>
+                  <h4
+                    style={{ color: this.state.lengthCondition ? "green" : "red" }}
+                  >
+                    <FontAwesomeIcon
+                      icon={this.state.lengthCondition ? faCheck : faXmark}
+                    />&nbsp;&nbsp;
+                    at least 8 characters
+                  </h4>
+                  <h4
+                    style={{
+                      color: this.state.numSymbolCondition ? "green" : "red",
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={this.state.numSymbolCondition ? faCheck : faXmark}
+                    />&nbsp;&nbsp;
+                    at least one number or symbol
+                  </h4>
+                  <h4
+                    style={{
+                      color: this.state.uppercaseCondition ? "green" : "red",
+                    }}
+                  >
+                    <FontAwesomeIcon
+                      icon={this.state.uppercaseCondition ? faCheck : faXmark}
+                    />&nbsp;&nbsp;
+                    at least one upper case
+                  </h4>
+                </div>
               ) : (
                 ""
               )}
-            </label>
-          </div>
-
-          <br />
-
-          <div className={loginStyles.formGroup}>
-            <input
-              id="email"
-              placeholder="E-mail"
-              autoComplete="off"
-              onFocus={() => this.setState({ email: true })}
-              onBlur={() => this.setState({ email: false })}
-              value={this.state.emailValue}
-              onChange={this.mailChange}
-            />
-
-            <label htmlFor="email" className={styles.labelIcon}>
-              <FontAwesomeIcon
-                icon={faAt}
-                fontSize={30}
-                color={this.state.email ? "#2c3e50" : "#C3C3C3"}
-              />
-            </label>
-            <label htmlFor="email" className={styles.RightIcon}>
-              {this.state.emailValueBool ? (
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  fontSize={30}
-                  color={this.state.emailAccepted ? "green" : "#C3C3C3"}
-                />
-              ) : (
-                ""
-              )}
-            </label>
-          </div>
-
-          <br />
-
-          <div className={loginStyles.formGroup}>
-            <input
-              type={this.state.eye ? "text" : "password"}
-              placeholder="Password"
-              onFocus={() => this.setState({ password: true })}
-              onBlur={() => this.setState({ password: false })}
-              onChange={this.passwordChange}
-            ></input>
-            <label htmlFor="password" className={styles.labelIcon}>
-              <FontAwesomeIcon
-                icon={faUnlock}
-                fontSize={30}
-                color={this.state.password ? "#2c3e50" : "#C3C3C3"}
-              />
-            </label>
-            <label htmlFor="password" className={loginStyles.eye}>
-              <FontAwesomeIcon
-                icon={this.state.eye ? faEye : faEyeSlash}
-                fontSize={30}
-                color={this.state.eye ? "#2c3e50" : "#C3C3C3"}
-                onClick={this.ChangePasswordToText}
-              />
-            </label>
-          </div>
-
-          {this.state.passwordConditions ? (
-            <div>
-              <h4
-                style={{ color: this.state.lengthCondition ? "green" : "red" }}
-              >
-                <FontAwesomeIcon
-                  icon={this.state.lengthCondition ? faCheck : faXmark}
-                />
-                at least 8 characters
-              </h4>
-              <h4
-                style={{
-                  color: this.state.numSymbolCondition ? "green" : "red",
-                }}
-              >
-                <FontAwesomeIcon
-                  icon={this.state.numSymbolCondition ? faCheck : faXmark}
-                />
-                at least one number or symbol
-              </h4>
-              <h4
-                style={{
-                  color: this.state.uppercaseCondition ? "green" : "red",
-                }}
-              >
-                <FontAwesomeIcon
-                  icon={this.state.uppercaseCondition ? faCheck : faXmark}
-                />
-                at least one upper case
-              </h4>
-            </div>
-          ) : (
-            ""
-          )}
-          <br />
+              <br />
 
 
-          <div className={loginStyles.formGroup}>
-            <input
-              type="password"
-              placeholder="Retype your password"
-              onFocus={() => this.setState({ retype: true })}
-              onBlur={() => this.setState({ retype: false })}
-              onChange={this.retypeChange}
-            ></input>
-            <label htmlFor="password" className={styles.labelIcon}>
-              <FontAwesomeIcon
-                icon={faUnlock}
-                fontSize={30}
-                color={this.state.retype ? "#2c3e50" : "#C3C3C3"}
-              />
-            </label>
-            <label htmlFor="password" className={styles.RightIcon}>
-              {this.state.retypeValueBool ? (
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  fontSize={30}
-                  color={this.state.retype ? "green" : "#C3C3C3"}
-                />
-              ) : (
-                ""
-              )}
-            </label>
-          </div>
-
+              <div className={loginStyles.formGroup}>
+                <input
+                  type="password"
+                  placeholder="Retype your password"
+                  onFocus={() => this.setState({ retype: true })}
+                  onBlur={() => this.setState({ retype: false })}
+                  onChange={this.retypeChange}
+                ></input>
+                <label htmlFor="password" className={styles.labelIcon}>
+                  <FontAwesomeIcon
+                    icon={faUnlock}
+                    fontSize={30}
+                    color={this.state.retype ? "#2c3e50" : "#C3C3C3"}
+                  />
+                </label>
+                <label htmlFor="password" className={styles.RightIcon}>
+                  {this.state.retypeValueBool ? (
+                    <FontAwesomeIcon
+                      icon={faCheck}
+                      fontSize={30}
+                      color={this.state.retype ? "green" : "#C3C3C3"}
+                    />
+                  ) : (
+                    ""
+                  )}
+                </label>
+              </div>
+          </div>      
           <div className={styles.signUp}>
             <p>
               Already a member ? <a href="/Login">Sign in</a>

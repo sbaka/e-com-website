@@ -5,22 +5,26 @@
 }
 .parent {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+  flex-direction: row;
 }
 .container {
   width: 600px;
-  height: 915px;
+  height: 85%;
   box-shadow: 5px 10px 10px 5px #0000002b;
   border-radius: 15px;
+  margin: 55px;
+}
+.formContainer{
+  height: 82%;
   display: flex;
   justify-content: space-evenly; /* to control main axis*/
   align-items: flex-start; /* to control cross axis*/
   flex-direction: column;
   padding-left: 45px;
-  margin: 55px;
 }
 h2 {
   color: #2c3e50;
@@ -58,8 +62,9 @@ input:focus {
   width: 90%;
 }
 .signUp {
-  align-self: center;
-  padding-right: 45px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 .signUp >  p > a {
@@ -85,7 +90,7 @@ input:focus {
 
 .bottomDiv {
   width: 100%;
-  padding-right: 45px;
+  padding-left: -45px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
