@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import styles from "../css/Card.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-class Card extends Component {
+
+class Card extends Component<any, any>{ 
   state = {};
   render() {
     return (
