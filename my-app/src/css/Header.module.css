@@ -2,7 +2,7 @@
   font-family: "Inter", sans-serif;
   margin: 0;
 }
-.bars{
+.bars {
   margin: 15px 25px; /*vertically horizontally*/
 }
 header {
@@ -29,14 +29,16 @@ header {
 .signin_up {
   display: flex;
   flex-direction: row;
-  margin-left: 40px;
+  margin: 0px 15px;
 }
 .links {
+  
   padding: 0px 5px;
 }
-h4 > a {
-  color: black;
+.links > a {
+  color: #222;
   font-weight: 100;
+  text-decoration: none;
 }
 
 .ul {
@@ -44,6 +46,7 @@ h4 > a {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  padding: 0px;
 }
 .li {
   padding: 30px 100px;

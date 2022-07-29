@@ -1,20 +1,26 @@
-import { Component } from "react";
-import Combobox from "react-widgets/Combobox";
-import "react-widgets/styles.css";
+import React, { Component } from "react";
+import Select from 'react-select'
+import styles from "../css/Sortby.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-import styles from "../css/Sortby.module.css"
-
+/* Dummy dat just to see the combobox*/
+const options = [
+  { value: 'chocolate', label: 'Chocolate' },
+  { value: 'strawberry', label: 'Strawberry' },
+  { value: 'vanilla', label: 'Vanilla' }
+]
 
 class SortBy extends Component {
-    state = {  } 
-    render() { 
-        return (
-            <Combobox
-            className={styles.combobox}
-            placeholder="SortBy"
-          />
-        );
-    }
+  
+  state = {};
+  render() {
+    return (
+      <React.Fragment>
+     <Select options={options} placeholder="Sortby"/>
+      </React.Fragment>
+    );
+  }
 }
- 
+
 export default SortBy;

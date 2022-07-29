@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Miki from "../assets/miki.jpg";
-import "../css/Card.css";
+import styles from "../css/Card.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 class Card extends Component {
@@ -8,23 +7,27 @@ class Card extends Component {
   render() {
     return (
       <React.Fragment>
-        <div className="card">
-          <div className="productimage">
-            <span>
-              <FontAwesomeIcon
-                className="iconcard"
-                icon={faCirclePlus}
-                fontSize={25}
-              />
-            </span>
-            <img className="productpic" src={this.props.img} />
+        <a href="/ProductInfo" className="hlessLink">
+          <div className={styles.card}>
+            <div className={styles.productimage}>
+              <span>
+                <FontAwesomeIcon
+                  className={styles.iconcard}
+                  icon={faCirclePlus}
+                  fontSize={25}
+                />
+              </span>
+              <img className={styles.productpic} src={this.props.img} />
+            </div>
+            <div className={styles.productinfo}>
+              <p className={styles.description}>{this.props.description}</p>
+              <div className={styles.productprice}>
+                <span className={styles.price}>{this.props.promotion} DZD</span>
+                <span className={styles.realprice}>{this.props.price} DZD</span>
+              </div>
+            </div>
           </div>
-          <div className="productinfo">
-            <p className="description">{this.props.description}</p>
-            <span className="price">{this.props.promotion} DZD</span>
-            <span className="realprice">{this.props.price} DZD</span>
-          </div>
-        </div>
+        </a>
       </React.Fragment>
     );
   }

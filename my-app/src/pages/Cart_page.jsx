@@ -1,23 +1,22 @@
 import React, { Component } from "react";
 import Header from "../components/header";
+import ListBag from "../components/ListBag";
 import OrderInfo from "../components/OrderInfo";
-import CartItem from '../components/CartItem'
-import styles from "../css/Cart.module.css"
+import styles from "../css/Cart.module.css";
+
 class Cart extends Component {
-  state = {}
+  state = {};
   render() {
     return (
       <React.Fragment>
         <Header />
         <div className={styles.mainContainer}>
-          <CartItem />
+          <ListBag />
           <div className={styles.order}>
             <OrderInfo />
           </div>
           {/* i use this for spacing */}
-          <div className={styles.empty}>
-
-          </div>
+          <div className={styles.empty}></div>
         </div>
       </React.Fragment>
     );
