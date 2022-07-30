@@ -25,7 +25,6 @@ function ReturnButton() {
 }
 const client = axios.create({
   baseURL: "http://sbaka-e-com-website.deno.dev",
-  headers: { "Access-Control-Allow-Origin": "*" },
 });
 class Login extends Component {
   state = {
@@ -47,14 +46,12 @@ class Login extends Component {
 
   fetchUser = () => {
     console.log("hello");
-
     client
       .get("/users")
       .then((response) => {
-        if (response !== null) {
-          if (response.success) {
-            console.log(response.body);
-          }
+        // console.log(response);
+        if (response.data.success) {
+          console.log(response.data.body[0]);
         }
       })
       .catch((err) => {

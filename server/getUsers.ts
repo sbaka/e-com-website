@@ -43,17 +43,23 @@ const checkUser = async ({
   }
 };
 
-const getUsers = async ({ response }: { response: any }) => {
-  let headers = new Headers({
-    accept: "application/json",
+function listUsers(req: any): Response {
+  console.log("hhhh");
+  const body = JSON.stringify({ message: "FOUND" });
+  return new Response(body, {
+    status: 200,
+    headers: {
+      "content-type": "application/json; charset=utf-8",
+      "Access-Control-Allow-Origin": "*",
+    },
   });
-  headers.append("Access-Control-Allow-Origin", "*");
+}
+
+const getUsers = async ({ response }: { response: any }) => {
   try {
     await client.connect();
     const queryRes = await client.queryArray("SELECT * FROM USERS LIMIT 10;");
-    response.header = {
-      "Access-Control-Allow-Origin": "*",
-    };
+    response.headers.set("Access-Control-Allow-Origin", "*");
     response.body = {
       success: true,
       body: queryRes.rows,
@@ -69,4 +75,4 @@ const getUsers = async ({ response }: { response: any }) => {
   }
 };
 
-export { getUsers, checkUser };
+export { getUsers, checkUser, listUsers };
