@@ -3,6 +3,6 @@ import {getUsers,checkUser} from "./getUsers.ts";
 const router = new Router();
 
 router.get('/users',getUsers)
-      
+      .get('/users/:email/:password',checkUser)
 
 export default router;
