@@ -1,8 +1,9 @@
+import React, { Component } from "react";
 import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
-import React, { Component } from "react";
 import styles from "../css/Login.module.css"; //css
+import axios from "axios";
 import "https://kit.fontawesome.com/728d58002e.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -22,18 +23,45 @@ function ReturnButton() {
     </button>
   );
 }
-
+const client = axios.create({
+  baseURL: "http://sbaka-e-com-website.deno.dev",
+  headers: { "Access-Control-Allow-Origin": "*" },
+});
 class Login extends Component {
   state = {
     eye: false /*to handle the changes on click of the icon*/,
     email: false,
     password: false,
+    user: [],
   };
-
+  componentDidMount() {
+    //this.fetchUser();
+  }
   ChangePasswordToText = () => {
     /*switch beetween icons + password or text type*/
     this.setState({ eye: !this.state.eye });
   };
+  setUser = (data) => {
+    this.setState({ user: data });
+  };
+
+  fetchUser = () => {
+    console.log("hello");
+
+    client
+      .get("/users")
+      .then((response) => {
+        if (response !== null) {
+          if (response.success) {
+            console.log(response.body);
+          }
+        }
+      })
+      .catch((err) => {
+        console.log("err");
+      });
+  };
+
   render() {
     return (
       <div className={styles.parent}>
@@ -95,7 +123,11 @@ class Login extends Component {
           </div>
 
           <div className={styles.bottomDiv}>
-            <button type="submit" className={styles.submitBtn}>
+            <button
+              type="submit"
+              className={styles.submitBtn}
+              onClick={this.fetchUser}
+            >
               <p>Sign in </p>
               <img id="arrow" src={arrowPic} alt="" />
             </button>
