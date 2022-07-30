@@ -44,9 +44,16 @@ const checkUser = async ({
 };
 
 const getUsers = async ({ response }: { response: any }) => {
+  let headers = new Headers({
+    accept: "application/json",
+  });
+  headers.append("Access-Control-Allow-Origin", "*");
   try {
     await client.connect();
     const queryRes = await client.queryArray("SELECT * FROM USERS LIMIT 10;");
+    response.header = {
+      "Access-Control-Allow-Origin": "*",
+    };
     response.body = {
       success: true,
       body: queryRes.rows,
