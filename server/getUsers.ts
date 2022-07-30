@@ -1,6 +1,6 @@
 import { Client } from "https://deno.land/x/postgres@v0.15.0/mod.ts";
 import { dbCreds} from "./dbConf.ts";
-import { User } from "./models.ts";
+// import { User } from "./models.ts";
 
 const client = new Client(dbCreds);
 
