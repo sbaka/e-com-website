@@ -7,7 +7,7 @@ const client = new Client(dbCreds);
 const checkUser = async({params , response }: {params:{email:string,password:string},response: any}) =>{
    try {
         await client.connect();
-        console.log(params.email)
+        // console.log(params.email)
         const queryString = `Select * from users where email = \'${params.email}\' and pwd = \'${params.password}\'`;
         // console.log(queryString)
         const queryRes = await client.queryArray(queryString);
