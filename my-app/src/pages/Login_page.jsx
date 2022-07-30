@@ -12,16 +12,15 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-function ReturnButton(){
+function ReturnButton() {
   const navigate = useNavigate();
-    return (
-      <button className={styles.return} onClick={() => navigate(-1)}
-        >
-          <FontAwesomeIcon icon={faArrowLeft} fontSize={30} />
-      </button>
-    );
+  return (
+    <button className={styles.return} onClick={() => navigate(-1)}>
+      <FontAwesomeIcon icon={faArrowLeft} fontSize={30} />
+    </button>
+  );
 }
 
 class Login extends Component {
@@ -30,18 +29,17 @@ class Login extends Component {
     email: false,
     password: false,
   };
-  
+
   ChangePasswordToText = () => {
     /*switch beetween icons + password or text type*/
     this.setState({ eye: !this.state.eye });
   };
   render() {
-    
     return (
       <div className={styles.parent}>
         <div className={styles.container_login}>
           <div className={styles.formContainer}>
-            <ReturnButton/>
+            <ReturnButton />
             <h2>Sign in</h2>
             <h4>Fill in the form bellow to continue</h4>
             <br />
@@ -89,7 +87,6 @@ class Login extends Component {
               </label>
             </div>
           </div>
-
 
           <div className={styles.signUp}>
             <p>

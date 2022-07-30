@@ -1,5 +1,5 @@
 import { Component } from "react";
-import Header from "../components/header";
+import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import CardList from "../components/CardList";
 import Sortby from "../components/Sortby";
