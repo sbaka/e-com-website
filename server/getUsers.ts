@@ -13,6 +13,7 @@ const checkUser = async ({
 }) => {
   try {
     await client.connect();
+    response.headers.set("Access-Control-Allow-Origin", "*");
     // console.log(params.email)
     const queryString = `Select * from users where email = \'${params.email}\' and pwd = \'${params.password}\'`;
     // console.log(queryString)
@@ -43,21 +44,10 @@ const checkUser = async ({
   }
 };
 
-function listUsers(req: any): Response {
-  console.log("hhhh");
-  const body = JSON.stringify({ message: "FOUND" });
-  return new Response(body, {
-    status: 200,
-    headers: {
-      "content-type": "application/json; charset=utf-8",
-      "Access-Control-Allow-Origin": "*",
-    },
-  });
-}
-
 const getUsers = async ({ response }: { response: any }) => {
   try {
     await client.connect();
+    response.headers.set("Access-Control-Allow-Origin", "*");
     const queryRes = await client.queryArray("SELECT * FROM USERS LIMIT 10;");
     response.headers.set("Access-Control-Allow-Origin", "*");
     response.body = {
@@ -75,4 +65,4 @@ const getUsers = async ({ response }: { response: any }) => {
   }
 };
 
-export { getUsers, checkUser, listUsers };
+export { getUsers, checkUser };
