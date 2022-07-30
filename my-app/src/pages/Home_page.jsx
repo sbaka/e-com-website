@@ -6,7 +6,7 @@ import Sortby from "../components/Sortby";
 
 import styles from "../css/app.module.css";
 
-class App extends Component {
+class Home extends Component {
   render() {
     return (
       <div className="App">
@@ -27,4 +27,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default Home;
