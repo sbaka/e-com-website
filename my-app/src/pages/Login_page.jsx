@@ -30,12 +30,20 @@ class Login extends Component {
   state = {
     eye: false /*to handle the changes on click of the icon*/,
     email: false,
+    emailValue: "",
     password: false,
+    passwordValue: "",
     user: [],
   };
-  componentDidMount() {
-    //this.fetchUser();
-  }
+  emailValueHandler = (event) => {
+    this.setState({ emailValue: event });
+    // console.log("state: " + this.state.emailValue);
+  };
+  passwordValueHandler = (event) => {
+    this.setState({ passwordValue: event });
+    // console.log("state: " + this.state.passwordValue);
+  };
+  componentDidMount() {}
   ChangePasswordToText = () => {
     /*switch beetween icons + password or text type*/
     this.setState({ eye: !this.state.eye });
@@ -45,18 +53,22 @@ class Login extends Component {
   };
 
   fetchUser = () => {
-    console.log("hello");
-    client
-      .get("/users")
-      .then((response) => {
-        // console.log(response);
-        if (response.data.success) {
-          console.log(response.data.body[0]);
-        }
-      })
-      .catch((err) => {
-        console.log("err");
-      });
+    const email = this.state.emailValue;
+    const pwd = this.state.passwordValue;
+    // console.log("hello " + email + " " + pwd);
+    if (email != null && pwd != null) {
+      client
+        .get("/users/" + email + "/" + pwd)
+        .then((response) => {
+          // console.log(response);
+          if (response.data.success) {
+            console.log(response.data.body[0]);
+          }
+        })
+        .catch((err) => {
+          console.log("err");
+        });
+    }
   };
 
   render() {
@@ -75,6 +87,7 @@ class Login extends Component {
                 placeholder="E-mail"
                 onFocus={() => this.setState({ email: true })}
                 onBlur={() => this.setState({ email: false })}
+                onChange={(e) => this.emailValueHandler(e.target.value)}
               />
               <label htmlFor="email" className={styles.labelIcon}>
                 <FontAwesomeIcon
@@ -93,6 +106,7 @@ class Login extends Component {
                 placeholder="Password"
                 onFocus={() => this.setState({ password: true })}
                 onBlur={() => this.setState({ password: false })}
+                onChange={(e) => this.passwordValueHandler(e.target.value)}
               />
               <label htmlFor="password" className={styles.labelIcon}>
                 <FontAwesomeIcon
