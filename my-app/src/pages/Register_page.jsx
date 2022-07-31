@@ -4,14 +4,11 @@
     TODO : check ta3 confirm password should stay green onblur
 */
 
-
-
-
 import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
 import styles from "../css/Register.module.css";
-import loginStyles from "../css/Login.module.css"
+import loginStyles from "../css/Login.module.css";
 import "https://kit.fontawesome.com/728d58002e.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -26,24 +23,23 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import React, { Component } from "react";
 import { useNavigate } from "react-router-dom";
+import { User } from "../models/models.ts";
+import axios from "axios";
 
-const numSymbolReg = /([0-9]|[#?!@$%^/&*-])/;
+const numSymbolReg = /([0-9]|[#?!@$%^/&*-.<> ])/;
 const uppercaseReg = /([A-Z])/;
 const userNameReg =
   /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/;
 const mailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-
 function ReturnButton() {
   const navigate = useNavigate();
   return (
-    <button className={loginStyles.return} onClick={() => navigate(-1)}
-    >
+    <button className={loginStyles.return} onClick={() => navigate(-1)}>
       <FontAwesomeIcon icon={faArrowLeft} fontSize={30} />
     </button>
   );
 }
-
 
 class Register extends Component {
   state = {
@@ -61,8 +57,8 @@ class Register extends Component {
     passwordConditions: false,
     passwordAccepted: false,
     lengthCondition: false, //for password check
-    numSymbolCondition: false,//for password check
-    uppercaseCondition: false,//for password check
+    numSymbolCondition: false, //for password check
+    uppercaseCondition: false, //for password check
     retype: false,
     retypeValueBool: false,
     eye: false,
@@ -82,34 +78,34 @@ class Register extends Component {
     if (event.target.value.length > 0) {
       this.setState({ passwordConditions: true });
       //if the password isn't empty check for these
-      if (event.target.value.length >= 8)
+      if (event.target.value.length >= 8) {
         //the 8 caracters condition
         this.setState({ lengthCondition: true });
-      else this.setState({ lengthCondition: false });
+      } else this.setState({ lengthCondition: false });
 
-      if (numSymbolReg.test(event.target.value) || event.target.value.includes(" ")) {
+      if (numSymbolReg.test(event.target.value)) {
         //check if the password has atleast one number/symbol in it
         this.setState({ numSymbolCondition: true });
         //console.log(event.target.value, numSymbolReg.test(event.target.value));
-      } else
-        this.setState({ numSymbolCondition: false });
+      } else this.setState({ numSymbolCondition: false });
 
       if (uppercaseReg.test(event.target.value))
         //check if the password has atleast one uppercase
         this.setState({ uppercaseCondition: true });
-      else
-        this.setState({ uppercaseCondition: false });
-    }
-    else {
+      else this.setState({ uppercaseCondition: false });
+    } else {
       this.setState({ passwordConditions: false });
     }
 
     //adding a conjucture to join all the booleans
     this.setState({
       passwordAccepted:
-        (this.state.lengthCondition && this.state.numSymbolCondition && this.state.uppercaseCondition)
-    })
+        this.state.lengthCondition &&
+        this.state.numSymbolCondition &&
+        this.state.uppercaseCondition,
+    });
   };
+  onBlurPassword = () => {};
 
   retypeChange = (event) => {
     //console.log(this.state.passwordString);
@@ -140,34 +136,43 @@ class Register extends Component {
   mailChange = (event) => {
     //same as userChange
     this.setState({ emailValue: event.target.value });
-    if (event.target.value === 0)
-      this.setState({ emailValueBool: false });
-    else
-      this.setState({ emailValueBool: true });
+    if (event.target.value === 0) this.setState({ emailValueBool: false });
+    else this.setState({ emailValueBool: true });
 
     if (mailReg.test(event.target.value))
       //check if the username matches with the regex  (=> emailAccepted = true)
       //if yes it shows the green color
       this.setState({ emailAccepted: true });
-    else
-      //else it shows the gray one
-      this.setState({ emailAccepted: false });
+    //else it shows the gray one
+    else this.setState({ emailAccepted: false });
   };
 
   submitSignUp = () => {
     //to handle form submition
+    const client = axios.create({
+      baseURL: "http://localhost:6969",
+    });
     let pwdAcceted = this.state.passwordAccepted;
     let userNAeccepted = this.state.userAccepted;
     let isEmailAcceted = this.state.emailAccepted;
     let samePwd = this.state.retypeValueBool;
     if (pwdAcceted && userNAeccepted && isEmailAcceted && samePwd) {
-
       console.log("proceed to login");
+
+      const currentUser: User = {
+        user: this.state.userValue,
+        email: this.state.emailValue,
+        password: this.state.passwordString,
+      };
+      axios
+        .post("http://localhost:6969/users", currentUser)
+        .then((response) => {
+          console.log(response);
+        });
     } else {
       console.log(pwdAcceted, userNAeccepted, isEmailAcceted, samePwd);
-
     }
-  }
+  };
 
   render() {
     return (
@@ -254,9 +259,12 @@ class Register extends Component {
                 type={this.state.eye ? "text" : "password"}
                 placeholder="Password"
                 onFocus={() => this.setState({ password: true })}
-                onBlur={() => this.setState({ password: false })}
-                onChange={this.passwordChange}
-              ></input>
+                onBlur={(e) => {
+                  this.setState({ password: false });
+                  this.passwordChange(e);
+                }}
+                onKeyUp={this.passwordChange}
+              />
               <label htmlFor="password" className={styles.labelIcon}>
                 <FontAwesomeIcon
                   icon={faUnlock}
@@ -277,12 +285,14 @@ class Register extends Component {
             {this.state.passwordConditions ? (
               <div>
                 <h4
-                  style={{ color: this.state.lengthCondition ? "green" : "red" }}
+                  style={{
+                    color: this.state.lengthCondition ? "green" : "red",
+                  }}
                 >
                   <FontAwesomeIcon
                     icon={this.state.lengthCondition ? faCheck : faXmark}
-                  />&nbsp;&nbsp;
-                  at least 8 characters
+                  />
+                  &nbsp;&nbsp; at least 8 characters
                 </h4>
                 <h4
                   style={{
@@ -291,8 +301,8 @@ class Register extends Component {
                 >
                   <FontAwesomeIcon
                     icon={this.state.numSymbolCondition ? faCheck : faXmark}
-                  />&nbsp;&nbsp;
-                  at least one number or symbol
+                  />
+                  &nbsp;&nbsp; at least one number or symbol
                 </h4>
                 <h4
                   style={{
@@ -301,15 +311,14 @@ class Register extends Component {
                 >
                   <FontAwesomeIcon
                     icon={this.state.uppercaseCondition ? faCheck : faXmark}
-                  />&nbsp;&nbsp;
-                  at least one upper case
+                  />
+                  &nbsp;&nbsp; at least one upper case
                 </h4>
               </div>
             ) : (
               ""
             )}
             <br />
-
 
             <div className={loginStyles.formGroup}>
               <input
@@ -346,7 +355,11 @@ class Register extends Component {
           </div>
 
           <div className={styles.bottomDiv}>
-            <button type="submit" className={styles.submitBtn} onClick={this.submitSignUp}>
+            <button
+              type="submit"
+              className={styles.submitBtn}
+              onClick={this.submitSignUp}
+            >
               <p>Sign up </p>
               <img id="arrow" src={arrowPic} alt="" />
             </button>
