@@ -43,7 +43,7 @@ class Login extends Component {
     this.setState({ passwordValue: event });
     // console.log("state: " + this.state.passwordValue);
   };
-  componentDidMount() {}
+  componentDidMount() { }
   ChangePasswordToText = () => {
     /*switch beetween icons + password or text type*/
     this.setState({ eye: !this.state.eye });
