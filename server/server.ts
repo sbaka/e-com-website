@@ -9,7 +9,7 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 app.use(
   oakCors({
-    origin: "http://41.99.16.253:3000",
+    origin: "*",
     optionsSuccessStatus: 200,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   })
