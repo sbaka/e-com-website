@@ -172,19 +172,18 @@ class Register extends Component {
         email: this.state.emailValue,
         password: this.state.passwordString,
       };
-      axios
-        .post("http://sbaka-e-com-website.deno.dev/adduser", {
-          user: this.state.userValue,
-          email: this.state.emailValue,
-          password: this.state.passwordString,
-        })
+      axios({
+        method: "post",
+        url: "https://sbaka-e-com-website.deno.dev/adduser",
+        data: currentUser,
+      })
         .then((response) => {
           console.log(response);
           this.clearInputs();
         })
         .catch((err) => {
           if ((err.status = 409)) {
-            //console.log("status = 409");
+            console.log("status = 409");
             // console.log(err.response.data.msg);
           }
         });
