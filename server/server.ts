@@ -7,14 +7,6 @@ const app = new Application();
 
 app.use(router.routes());
 app.use(router.allowedMethods());
-app.use(
-  oakCors({
-    origin: "http://localhost:3000",
-    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-    preflightContinue: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  })
-);
 
 console.log(`Server Running on port ${port}`);
 

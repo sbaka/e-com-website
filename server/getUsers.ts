@@ -74,7 +74,10 @@ const addUser = async ({
 }) => {
   //allowing posts and rquests from everywhere
   response.headers.set("Access-Control-Allow-Origin", "*");
-  response.headers.set("Access-Control-Allow-Methods", "POST, GET");
+  response.headers.set(
+    "Access-Control-Allow-Methods",
+    "GET,HEAD,PUT,PATCH,POST,DELETE"
+  );
   //if the request has no body (which should have always) send the following response
   if (!request.hasBody) {
     response.status = 400;
