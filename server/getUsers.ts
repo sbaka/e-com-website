@@ -50,7 +50,6 @@ const getUsers = async ({ response }: { response: any }) => {
     await client.connect();
     response.headers.set("Access-Control-Allow-Origin", "*");
     const queryRes = await client.queryArray("SELECT * FROM USERS LIMIT 10;");
-    response.headers.set("Access-Control-Allow-Origin", "*");
     response.body = {
       success: true,
       body: queryRes.rows,
@@ -73,11 +72,9 @@ const addUser = async ({
   request: any;
   response: any;
 }) => {
-  const body = await request.body();
-  const temp: User = await body.value; // get the body
-  const user: User = JSON.parse(temp.toString()); // parse it from json cuz it doesnt work otherwise
-  // console.log(user)
-  //if the request has no body (which should have always) then its fine
+  //allowing posts and rquests from everywhere
+  response.headers.set("Access-Control-Allow-Origin", "*");
+  //if the request has no body (which should have always) send the following response
   if (!request.hasBody) {
     response.status = 400;
     response.body = {
@@ -88,40 +85,56 @@ const addUser = async ({
     try {
       //connecting to database
       await client.connect();
-      //checking if the user.email has an account already
-      const queryRes = await client.queryArray(
+      const body = await request.body(); // get the body of the request
+      const user: User = await body.value; // set The user Var so the data gets structured
+
+      const getMail = await client.queryArray(
         `Select * from users where email = \'${user.email}\'`
       );
+
       //if the query has content then process it
-      if (queryRes.rows.toString() != "") {
+      if (getMail.rows.toString() != "") {
         response.status = 409;
         response.body = {
           success: false,
-          msg: "account already existent",
+          msg: "Email already existent",
         };
       } else {
-        const query =
-          "INSERT INTO USERS(adress, email, username, pwd, age, phone, picture)" +
-          "VALUES(" +
-          "'','" +
-          user.email +
-          "','" +
-          user.user +
-          "','" +
-          user.password +
-          "',1,'0363636363','1'" + //age, phone,picture
-          ")";
+        const getUserName = await client.queryArray(
+          `Select * from users where username = \'${user.user}\'`
+        );
+        // console.log(getUserName.rows);
+        if (getUserName.rows.toString() != "") {
+          response.status = 409;
+          response.body = {
+            success: false,
+            msg: "Username already existent",
+          };
+        } else {
+          //if the email and the username doesn't already exist  then proceed and add it to the db
+          const query =
+            "INSERT INTO USERS(adress, email, username, pwd, age, phone, picture)" +
+            "VALUES(" +
+            "'','" +
+            user.email +
+            "','" +
+            user.user +
+            "','" +
+            `${user.password}` +
+            "',1,'','1'" + //age, phone,picture
+            ")";
 
-        console.log(query);
+          //console.log(query);
 
-        const result = await client.queryArray(query);
-        //logging the querry if the querry isn't null
-        result ?? console.log("query executed" + query);
-        response.status = 201;
-        response.body = {
-          success: true,
-          msg: "Account added successfully",
-        };
+          const result = await client.queryArray(query);
+
+          result ?? console.log("query executed" + query); //logging the querry if the querry isn't null (the ?? checks if a var is null)
+          response.status = 201;
+          response.body = {
+            success: true,
+            msg: "Account added successfully",
+          };
+        }
       }
     } catch (err) {
       (response.status = 500),

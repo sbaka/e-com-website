@@ -1,14 +1,14 @@
-//TODO : ON SUBMIT CHECK IF ALL THE INPUTS ARE VALID
-
 /*
-    TODO : check ta3 confirm password should stay green onblur
+    TODO : -  check ta3 confirm password should stay green onblur
+           -  Error display kayen 3:
+                - ta3 fill in the form ki ydir submit l form khawya
+                - ki ykoun server response 409 (conflict)
+                - f regex lokan ykoun kayen info on hover on what it should should contain 
+            
 */
-
-import fbLogo from "../assets/facebook.png";
-import googleLogo from "../assets/google.png";
-import arrowPic from "../assets/arrow_signIn.png";
-import styles from "../css/Register.module.css";
-import loginStyles from "../css/Login.module.css";
+import React, { Component } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "https://kit.fontawesome.com/728d58002e.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -21,10 +21,14 @@ import {
   faEyeSlash,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import React, { Component } from "react";
-import { useNavigate } from "react-router-dom";
+
+//local imports
 import { User } from "../models/models.ts";
-import axios from "axios";
+import fbLogo from "../assets/facebook.png";
+import googleLogo from "../assets/google.png";
+import arrowPic from "../assets/arrow_signIn.png";
+import styles from "../css/Register.module.css";
+import loginStyles from "../css/Login.module.css";
 
 const numSymbolReg = /([0-9]|[#?!@$%^/&*-.<> ])/;
 const uppercaseReg = /([A-Z])/;
@@ -60,6 +64,7 @@ class Register extends Component {
     numSymbolCondition: false, //for password check
     uppercaseCondition: false, //for password check
     retype: false,
+    retypeValue: "",
     retypeValueBool: false,
     eye: false,
   };
@@ -83,7 +88,11 @@ class Register extends Component {
         this.setState({ lengthCondition: true });
       } else this.setState({ lengthCondition: false });
 
-      if (numSymbolReg.test(event.target.value)) {
+      if (
+        numSymbolReg.test(event.target.value) &&
+        !event.target.value.includes('"') &&
+        !event.target.value.includes("'")
+      ) {
         //check if the password has atleast one number/symbol in it
         this.setState({ numSymbolCondition: true });
         //console.log(event.target.value, numSymbolReg.test(event.target.value));
@@ -108,6 +117,9 @@ class Register extends Component {
   onBlurPassword = () => {};
 
   retypeChange = (event) => {
+    this.setState({
+      retypeValue: event.target.value,
+    });
     //console.log(this.state.passwordString);
     if (event.target.value === this.state.passwordString)
       this.setState({ retypeValueBool: true });
@@ -147,33 +159,63 @@ class Register extends Component {
     else this.setState({ emailAccepted: false });
   };
 
-  submitSignUp = () => {
-    //to handle form submition
-    const client = axios.create({
-      baseURL: "http://localhost:6969",
-    });
+  submitSignUp = (event) => {
+    //to handle form submition;
     let pwdAcceted = this.state.passwordAccepted;
     let userNAeccepted = this.state.userAccepted;
     let isEmailAcceted = this.state.emailAccepted;
     let samePwd = this.state.retypeValueBool;
     if (pwdAcceted && userNAeccepted && isEmailAcceted && samePwd) {
-      console.log("proceed to login");
-
+      //console.log("proceed to login");
       const currentUser: User = {
         user: this.state.userValue,
         email: this.state.emailValue,
         password: this.state.passwordString,
       };
       axios
-        .post("http://localhost:6969/users", currentUser)
+        .post("http://sbaka-e-com-website.deno.dev/adduser", {
+          user: this.state.userValue,
+          email: this.state.emailValue,
+          password: this.state.passwordString,
+        })
         .then((response) => {
           console.log(response);
+          this.clearInputs();
+        })
+        .catch((err) => {
+          if ((err.status = 409)) {
+            //console.log("status = 409");
+            // console.log(err.response.data.msg);
+          }
         });
     } else {
       console.log(pwdAcceted, userNAeccepted, isEmailAcceted, samePwd);
     }
   };
-
+  //clearing inputs
+  clearInputs = () => {
+    this.setState({
+      user: false,
+      userValue: "",
+      userValueBool: false,
+      userAccepted: false,
+      email: false,
+      emailValue: "",
+      emailValueBool: false,
+      emailAccepted: false,
+      password: false,
+      passwordString: "",
+      passwordConditions: false,
+      passwordAccepted: false,
+      lengthCondition: false, //for password check
+      numSymbolCondition: false, //for password check
+      uppercaseCondition: false, //for password check
+      retype: false,
+      retypeValue: "",
+      retypeValueBool: false,
+      eye: false,
+    });
+  };
   render() {
     return (
       <div className={styles.parent}>
@@ -263,7 +305,8 @@ class Register extends Component {
                   this.setState({ password: false });
                   this.passwordChange(e);
                 }}
-                onKeyUp={this.passwordChange}
+                onChange={this.passwordChange}
+                value={this.state.passwordString}
               />
               <label htmlFor="password" className={styles.labelIcon}>
                 <FontAwesomeIcon
@@ -327,6 +370,7 @@ class Register extends Component {
                 onFocus={() => this.setState({ retype: true })}
                 onBlur={() => this.setState({ retype: false })}
                 onChange={this.retypeChange}
+                value={this.state.retypeValue}
               ></input>
               <label htmlFor="password" className={styles.labelIcon}>
                 <FontAwesomeIcon
@@ -358,7 +402,7 @@ class Register extends Component {
             <button
               type="submit"
               className={styles.submitBtn}
-              onClick={this.submitSignUp}
+              onClick={(e) => this.submitSignUp(e)}
             >
               <p>Sign up </p>
               <img id="arrow" src={arrowPic} alt="" />
