@@ -14,7 +14,7 @@ const checkUser = async ({
 }) => {
   try {
     await client.connect();
-    response.headers.set("Access-Control-Allow-Origin", "*");
+    // response.headers.set("Access-Control-Allow-Origin", "*");
     // console.log(params.email)
     const queryString = `Select * from users where email = \'${params.email}\' and pwd = \'${params.password}\'`;
     // console.log(queryString)
