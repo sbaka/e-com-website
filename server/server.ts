@@ -1,5 +1,5 @@
 import { Application } from "https://deno.land/x/oak@v10.5.1/mod.ts";
-// import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
+import { oakCors } from "https://deno.land/x/cors@v1.2.2/mod.ts";
 import router from "./routes.ts";
 const port = 6969;
 
@@ -13,6 +13,14 @@ app.use(router.allowedMethods());
 //     optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 //   })
 // );
+app.use(
+  oakCors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  })
+);
 
 console.log(`Server Running on port ${port}`);
 
