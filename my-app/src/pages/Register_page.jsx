@@ -29,7 +29,7 @@ import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
 import styles from "../css/Register.module.css";
 import loginStyles from "../css/Login.module.css";
-
+import Loader from "../components/Loader.jsx";
 const numSymbolReg = /([0-9]|[#?!@$%^/&*-.<> ])/;
 const uppercaseReg = /([A-Z])/;
 const userNameReg =
@@ -67,6 +67,7 @@ class Register extends Component {
     retypeValue: "",
     retypeValueBool: false,
     eye: false,
+    divDisabled: false,
   };
 
   ChangePasswordToText = () => {
@@ -165,7 +166,12 @@ class Register extends Component {
     let userNAeccepted = this.state.userAccepted;
     let isEmailAcceted = this.state.emailAccepted;
     let samePwd = this.state.retypeValueBool;
+
     if (pwdAcceted && userNAeccepted && isEmailAcceted && samePwd) {
+      //set the the div to disabled to prevent more inputs
+      this.setState({
+        divDisabled: true,
+      });
       //console.log("proceed to login");
       const currentUser: User = {
         user: this.state.userValue,
@@ -178,6 +184,9 @@ class Register extends Component {
         data: currentUser,
       })
         .then((response) => {
+          this.setState({
+            divDisabled: false,
+          });
           console.log(response);
           this.clearInputs();
         })
@@ -213,19 +222,21 @@ class Register extends Component {
       retypeValue: "",
       retypeValueBool: false,
       eye: false,
+      divDisabled: false,
     });
   };
   render() {
     return (
       <div className={styles.parent}>
         <div className={styles.container}>
-          <div className={styles.formContainer}>
+          <div
+            className={styles.formContainer}
+            disabled={this.state.divDisabled}
+          >
             <ReturnButton />
             <h2>Sign up</h2>
             <h4>Fill in the form bellow to continue</h4>
-
             <br />
-
             <div className={loginStyles.formGroup}>
               <input
                 id="username"
@@ -412,6 +423,18 @@ class Register extends Component {
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <img src={googleLogo} alt="google" />
             </div>
+            <div className={styles.loading}>
+              {this.divDisabled ? <Loader /> : ""}
+            </div>
+          </div>
+          <div
+            className={styles.loading}
+            style={
+              ({ opacity: this.state.divDisabled ? 1 : 0 },
+              { zIndex: this.state.divDisabled ? "9" : "-1" })
+            }
+          >
+            {this.state.divDisabled ? <Loader /> : ""}
           </div>
         </div>
       </div>

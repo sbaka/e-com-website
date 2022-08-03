@@ -9,6 +9,7 @@ import Login from "./pages/Login_page";
 import Register from "./pages/Register_page";
 import Cart from "./pages/Cart_page";
 import Product from "./pages/Product_page";
+import Loader from "./components/Loader"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -21,6 +22,7 @@ root.render(
       <Route path="/Register" element={<Register />} />
       <Route path="/Cart" element={<Cart />} />
       <Route path="/ProductInfo" element={<Product />} />
+      <Route path="/loader" element={<Loader />} />
     </Routes>
   </BrowserRouter>
 );

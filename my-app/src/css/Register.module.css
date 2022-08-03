@@ -17,7 +17,23 @@
   box-shadow: 5px 10px 10px 5px #0000002b;
   border-radius: 15px;
   margin: 55px;
+  display: flex;
+  flex-direction: column;
 }
+
+.loading{
+  /* for the loading it has the same height and width of the real container but with 
+    position set to absolute so that it overlaps the actual .container
+  */
+  position: absolute;
+  height: 85%;
+  width: 600px;
+  z-index: -1; /* using this to tell the html that this goes beneath the other div then onClick setting it to 9 so that it comes on top*/
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
 .formContainer{
   height: 82%;
   display: flex;
