@@ -4,7 +4,7 @@ import SideBar from "../components/SideBar";
 import CardList from "../components/CardList";
 import Sortby from "../components/Sortby";
 
-import styles from "../css/app.module.css";
+import styles from "../css/pages/HomePage.module.css";
 
 class Home extends Component {
   render() {

@@ -2,7 +2,8 @@ import React from "react";
 import dahabiaLogo from "../assets/eddahabia.svg";
 import cibLogo from "../assets/CIB.svg";
 import emptyLogo from "../assets/Rectangle.svg";
-import styles from "../css/Cart.module.css";
+
+import styles from "../css/pages/Cart.module.css";
 
 //crating a custom component inside here cuz i'll just need it here
 function CardComponent(props) {

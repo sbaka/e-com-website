@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Card from "./Card";
-import styles from "../css/main.module.css";
+import styles from "../css/components/CardList.module.css";
 import { productData } from "../data/dummyProducts.js";
 class CardList extends Component {
   state = {

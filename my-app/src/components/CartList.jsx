@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import CartItem from "./CartItem";
-import styles from "../css/BagList.module.css";
+import styles from "../css/components/CartList.module.css";
 class CartList extends Component {
   state = {
     chemises: [

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../assets/logo.png";
-import styles from "../css/Header.module.css";
+import styles from "../css/components/Header.module.css";
 import {
   faBars,
   faMagnifyingGlass,

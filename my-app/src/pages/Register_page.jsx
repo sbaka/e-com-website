@@ -27,18 +27,16 @@ import { User } from "../models/models.ts";
 import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
-import styles from "../css/Register.module.css";
-import loginStyles from "../css/Login.module.css";
+import styles from "../css/pages/Register.module.css";
+import loginStyles from "../css/pages/Login.module.css";
 import Loader from "../components/Loader.jsx";
-
-
 
 //reg expression
 const numSymbolReg = /([0-9]|[#?!@$%^/&*-.<> ])/;
 const uppercaseReg = /([A-Z])/;
 const userNameReg =
   /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/;
-const mailReg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const mailReg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 function ReturnButton() {
   const navigate = useNavigate();
@@ -119,7 +117,7 @@ class Register extends Component {
         this.state.uppercaseCondition,
     });
   };
-  onBlurPassword = () => { };
+  onBlurPassword = () => {};
 
   retypeChange = (event) => {
     this.setState({
@@ -435,7 +433,7 @@ class Register extends Component {
             className={styles.loading}
             style={
               ({ opacity: this.state.divDisabled ? 1 : 0 },
-                { zIndex: this.state.divDisabled ? "9" : "-1" })
+              { zIndex: this.state.divDisabled ? "9" : "-1" })
             }
           >
             {this.state.divDisabled ? <Loader /> : ""}

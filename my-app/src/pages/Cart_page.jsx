@@ -4,7 +4,7 @@ import { Scrollbars } from "react-custom-scrollbars-2";
 import Header from "../components/Header";
 import CartList from "../components/CartList";
 import OrderInfo from "../components/OrderInfo";
-import styles from "../css/Cart.module.css";
+import styles from "../css/pages/Cart.module.css";
 
 class Cart extends Component {
   state = {};

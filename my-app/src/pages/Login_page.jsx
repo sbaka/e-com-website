@@ -1,4 +1,3 @@
-
 import axios from "axios";
 import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,9 +13,8 @@ import {
 import fbLogo from "../assets/facebook.png";
 import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
-import styles from "../css/Login.module.css"; //css
-import Loader from '../components/Loader'
-
+import Loader from "../components/Loader";
+import styles from "../css/pages/Login.module.css"; //css
 
 function ReturnButton() {
   const navigate = useNavigate();
@@ -47,7 +45,7 @@ class Login extends Component {
     this.setState({ passwordValue: event });
     // console.log("state: " + this.state.passwordValue);
   };
-  componentDidMount() { }
+  componentDidMount() {}
   ChangePasswordToText = () => {
     /*switch beetween icons + password or text type*/
     this.setState({ eye: !this.state.eye });
@@ -82,9 +80,8 @@ class Login extends Component {
           }
         })
         .catch((err) => {
-          if (err.status == 404) {
+          if (err.status === 404) {
             console.log("wrong combination");
-
           }
           console.log("err");
         });
@@ -102,14 +99,16 @@ class Login extends Component {
       passwordValue: "",
       user: [],
       divDisabled: false,
-    })
-  }
+    });
+  };
   render() {
     return (
       <div className={styles.parent}>
         <div className={styles.container_login}>
-          <div className={styles.formContainer}
-            disabled={this.state.divDisabled}>
+          <div
+            className={styles.formContainer}
+            disabled={this.state.divDisabled}
+          >
             <ReturnButton />
             <h2>Sign in</h2>
             <h4>Fill in the form bellow to continue</h4>
@@ -187,11 +186,10 @@ class Login extends Component {
             className={styles.loading}
             style={
               ({ opacity: this.state.divDisabled ? 1 : 0 },
-                { zIndex: this.state.divDisabled ? "9" : "-1" })
+              { zIndex: this.state.divDisabled ? "9" : "-1" })
             }
           >
-            {this.state.divDisabled ? <Loader /> : ''}
-
+            {this.state.divDisabled ? <Loader /> : ""}
           </div>
         </div>
       </div>
