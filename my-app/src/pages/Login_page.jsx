@@ -70,6 +70,7 @@ class Login extends Component {
       this.setState({
         divDisabled: true,
       });
+
       client
         .get("/users/" + email + "/" + pwd)
         .then((response) => {
@@ -78,18 +79,22 @@ class Login extends Component {
             console.log(response.data.body[0]);
             this.clearInputs();
           }
+          this.setState({
+            divDisabled: false,
+          });
         })
         .catch((err) => {
           if (err.status === 404) {
             console.log("wrong combination");
           }
           console.log("err");
+          this.setState({
+            divDisabled: false,
+          });
         });
-      this.setState({
-        divDisabled: false,
-      });
     }
   };
+
   clearInputs = () => {
     this.setState({
       eye: false,
@@ -118,6 +123,7 @@ class Login extends Component {
               <input
                 id="email"
                 placeholder="E-mail"
+                value={this.state.emailValue}
                 onFocus={() => this.setState({ email: true })}
                 onBlur={() => this.setState({ email: false })}
                 onChange={(e) => this.emailValueHandler(e.target.value)}
@@ -137,6 +143,7 @@ class Login extends Component {
               <input
                 type={this.state.eye ? "text" : "password"}
                 placeholder="Password"
+                value={this.state.passwordValue}
                 onFocus={() => this.setState({ password: true })}
                 onBlur={() => this.setState({ password: false })}
                 onChange={(e) => this.passwordValueHandler(e.target.value)}
