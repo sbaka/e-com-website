@@ -1,11 +1,8 @@
-import React, { Component } from "react";
-import fbLogo from "../assets/facebook.png";
-import googleLogo from "../assets/google.png";
-import arrowPic from "../assets/arrow_signIn.png";
-import styles from "../css/Login.module.css"; //css
+
 import axios from "axios";
-import "https://kit.fontawesome.com/728d58002e.js";
+import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import {
   faAt,
   faUnlock,
@@ -13,7 +10,13 @@ import {
   faEye,
   faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+//local imports
+import fbLogo from "../assets/facebook.png";
+import googleLogo from "../assets/google.png";
+import arrowPic from "../assets/arrow_signIn.png";
+import styles from "../css/Login.module.css"; //css
+import Loader from '../components/Loader'
+
 
 function ReturnButton() {
   const navigate = useNavigate();
@@ -34,6 +37,7 @@ class Login extends Component {
     password: false,
     passwordValue: "",
     user: [],
+    divDisabled: false,
   };
   emailValueHandler = (event) => {
     this.setState({ emailValue: event });
@@ -53,29 +57,59 @@ class Login extends Component {
   };
 
   fetchUser = () => {
+    //TODO: add password encryption and decreption before sending a get request
+    /*
+      so what this does is sets the {divDisabled} state to true to display the loading
+      go make a get request with the url /user/{email}/{password}
+      and then sets {divDisabled} back to false 
+      TODO: navigate to the next page right after.
+       
+    */
     const email = this.state.emailValue;
     const pwd = this.state.passwordValue;
     // console.log("hello " + email + " " + pwd);
     if (email != null && pwd != null) {
+      this.setState({
+        divDisabled: true,
+      });
       client
         .get("/users/" + email + "/" + pwd)
         .then((response) => {
           // console.log(response);
           if (response.data.success) {
             console.log(response.data.body[0]);
+            this.clearInputs();
           }
         })
         .catch((err) => {
+          if (err.status == 404) {
+            console.log("wrong combination");
+
+          }
           console.log("err");
         });
+      this.setState({
+        divDisabled: false,
+      });
     }
   };
-
+  clearInputs = () => {
+    this.setState({
+      eye: false,
+      email: false,
+      emailValue: "",
+      password: false,
+      passwordValue: "",
+      user: [],
+      divDisabled: false,
+    })
+  }
   render() {
     return (
       <div className={styles.parent}>
         <div className={styles.container_login}>
-          <div className={styles.formContainer}>
+          <div className={styles.formContainer}
+            disabled={this.state.divDisabled}>
             <ReturnButton />
             <h2>Sign in</h2>
             <h4>Fill in the form bellow to continue</h4>
@@ -148,6 +182,16 @@ class Login extends Component {
               &nbsp;&nbsp;
               <img src={googleLogo} alt="google" />
             </div>
+          </div>
+          <div
+            className={styles.loading}
+            style={
+              ({ opacity: this.state.divDisabled ? 1 : 0 },
+                { zIndex: this.state.divDisabled ? "9" : "-1" })
+            }
+          >
+            {this.state.divDisabled ? <Loader /> : ''}
+
           </div>
         </div>
       </div>

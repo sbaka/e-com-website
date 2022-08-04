@@ -1,5 +1,5 @@
 /*
-    TODO : -  check ta3 confirm password should stay green onblur
+    TODO: -  check ta3 confirm password should stay green onblur
            -  Error display kayen 3:
                 - ta3 fill in the form ki ydir submit l form khawya
                 - ki ykoun server response 409 (conflict)
@@ -30,6 +30,10 @@ import arrowPic from "../assets/arrow_signIn.png";
 import styles from "../css/Register.module.css";
 import loginStyles from "../css/Login.module.css";
 import Loader from "../components/Loader.jsx";
+
+
+
+//reg expression
 const numSymbolReg = /([0-9]|[#?!@$%^/&*-.<> ])/;
 const uppercaseReg = /([A-Z])/;
 const userNameReg =
@@ -115,7 +119,7 @@ class Register extends Component {
         this.state.uppercaseCondition,
     });
   };
-  onBlurPassword = () => {};
+  onBlurPassword = () => { };
 
   retypeChange = (event) => {
     this.setState({
@@ -431,7 +435,7 @@ class Register extends Component {
             className={styles.loading}
             style={
               ({ opacity: this.state.divDisabled ? 1 : 0 },
-              { zIndex: this.state.divDisabled ? "9" : "-1" })
+                { zIndex: this.state.divDisabled ? "9" : "-1" })
             }
           >
             {this.state.divDisabled ? <Loader /> : ""}
