@@ -21,6 +21,7 @@ import {
   faEyeSlash,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
+import ReactTooltip from 'react-tooltip';
 
 //local imports
 import { User } from "../models/models.ts";
@@ -117,7 +118,6 @@ class Register extends Component {
         this.state.uppercaseCondition,
     });
   };
-  onBlurPassword = () => {};
 
   retypeChange = (event) => {
     this.setState({
@@ -252,6 +252,7 @@ class Register extends Component {
                 } /*user icon highlight removed */
                 value={this.state.userValue}
                 onChange={this.userChange}
+                data-tip="can only be 5-18 alphanumerics long and only supports '-' or '_'"
               />
               <label htmlFor="username" className={styles.labelIcon}>
                 <FontAwesomeIcon
@@ -319,6 +320,7 @@ class Register extends Component {
                 }}
                 onChange={this.passwordChange}
                 value={this.state.passwordString}
+                data-tip="Only accepts [#?!@$%^/&*-.<> ] as symbols"
               />
               <label htmlFor="password" className={styles.labelIcon}>
                 <FontAwesomeIcon
@@ -336,7 +338,7 @@ class Register extends Component {
                 />
               </label>
             </div>
-
+            {/* this section is for showing the paasword conditions to be fulfilled or not */}
             {this.state.passwordConditions ? (
               <div>
                 <h4
@@ -383,6 +385,7 @@ class Register extends Component {
                 onBlur={() => this.setState({ retype: false })}
                 onChange={this.retypeChange}
                 value={this.state.retypeValue}
+                data-tip="Passwords must match"
               ></input>
               <label htmlFor="password" className={styles.labelIcon}>
                 <FontAwesomeIcon
@@ -433,12 +436,13 @@ class Register extends Component {
             className={styles.loading}
             style={
               ({ opacity: this.state.divDisabled ? 1 : 0 },
-              { zIndex: this.state.divDisabled ? "9" : "-1" })
+                { zIndex: this.state.divDisabled ? "9" : "-1" })
             }
           >
             {this.state.divDisabled ? <Loader /> : ""}
           </div>
         </div>
+        <ReactTooltip />
       </div>
     );
   }
