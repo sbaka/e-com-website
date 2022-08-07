@@ -442,7 +442,11 @@ class Register extends Component {
             {this.state.divDisabled ? <Loader /> : ""}
           </div>
         </div>
-        <ReactTooltip />
+        {/* to handle the tooltip shown the params are:
+              -wait 300ms to show the toltip to avoid accidental shows
+              -remove it after 3s
+        */}
+        <ReactTooltip delayShow={300} afterShow={(e) => setTimeout(ReactTooltip.hide, 3000)} />
       </div>
     );
   }
