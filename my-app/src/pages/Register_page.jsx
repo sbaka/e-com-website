@@ -35,8 +35,13 @@ import Loader from "../components/Loader.jsx";
 //reg expression
 const numSymbolReg = /([0-9]|[#?!@$%^/&*-.<> ])/;
 const uppercaseReg = /([A-Z])/;
+/*username is 5-18 characters long,
+  no _ or . at the beginning,
+  no __ or _. or ._ or .. inside
+  allowed characters
+  no _ or . at the end*/
 const userNameReg =
-  /^[a-zA-Z0-9]([._-](?![._-])|[a-zA-Z0-9]){3,18}[a-zA-Z0-9]$/;
+  /^(?=.{5,18}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$/;
 const mailReg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
 
 function ReturnButton() {

@@ -24,28 +24,48 @@ function ReturnButton() {
     </button>
   );
 }
-const client = axios.create({
-  baseURL: "http://sbaka-e-com-website.deno.dev",
-});
+
+
 class Login extends Component {
   state = {
     eye: false /*to handle the changes on click of the icon*/,
-    email: false,
-    emailValue: "",
+    email: false, //this is for styling 
+    emailAccepted: false, //this is for handeling the regex
+    emailValue: "", // this is for the actual value of the mail
     password: false,
+    passwordAccepted: false,
     passwordValue: "",
     user: [],
     divDisabled: false,
   };
+
   emailValueHandler = (event) => {
-    this.setState({ emailValue: event });
-    // console.log("state: " + this.state.emailValue);
+    //email reg to check if the email is conform to the standards
+    const mailReg = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    this.setState({ emailValue: event.target.value });
+
+    if (mailReg.test(event.target.value))
+      //check if the username matches with the regex  (=> emailAccepted = true)
+      //if yes it shows the green color
+      this.setState({ emailAccepted: true });
+    //else it shows the gray one
+    else this.setState({ emailAccepted: false });
+    // console.log(this.state.emailAccepted);
   };
+
+
   passwordValueHandler = (event) => {
-    this.setState({ passwordValue: event });
+    this.setState({ passwordValue: event.target.value });
     // console.log("state: " + this.state.passwordValue);
+    if (event.target.value.length > 7) {
+      if (event.target.value.includes("'") || event.target.value.includes('"'))
+        this.setState({ passwordAccepted: false })
+      else
+        this.setState({ passwordAccepted: true })
+    }
+
   };
-  componentDidMount() {}
+  componentDidMount() { }
   ChangePasswordToText = () => {
     /*switch beetween icons + password or text type*/
     this.setState({ eye: !this.state.eye });
@@ -63,10 +83,14 @@ class Login extends Component {
       TODO: navigate to the next page right after.
        
     */
+    const client = axios.create({
+      baseURL: "http://sbaka-e-com-website.deno.dev",
+    });
     const email = this.state.emailValue;
     const pwd = this.state.passwordValue;
+
     // console.log("hello " + email + " " + pwd);
-    if (email != null && pwd != null) {
+    if (this.state.emailAccepted && this.state.passwordAccepted) {
       this.setState({
         divDisabled: true,
       });
@@ -92,9 +116,12 @@ class Login extends Component {
             divDisabled: false,
           });
         });
+    } else {
+      //TODO: -add red stuff so the user knows that these are required (email,pwd)
     }
   };
-
+  // submit = () => {
+  // }
   clearInputs = () => {
     this.setState({
       eye: false,
@@ -125,8 +152,8 @@ class Login extends Component {
                 placeholder="E-mail"
                 value={this.state.emailValue}
                 onFocus={() => this.setState({ email: true })}
-                onBlur={() => this.setState({ email: false })}
-                onChange={(e) => this.emailValueHandler(e.target.value)}
+                onBlur={(e) => { this.setState({ email: false }); this.emailValueHandler(e) }}
+                onChange={this.emailValueHandler}
               />
               <label htmlFor="email" className={styles.labelIcon}>
                 <FontAwesomeIcon
@@ -145,8 +172,8 @@ class Login extends Component {
                 placeholder="Password"
                 value={this.state.passwordValue}
                 onFocus={() => this.setState({ password: true })}
-                onBlur={() => this.setState({ password: false })}
-                onChange={(e) => this.passwordValueHandler(e.target.value)}
+                onBlur={(e) => { this.setState({ password: false }); this.passwordValueHandler(e) }}
+                onChange={this.passwordValueHandler}
               />
               <label htmlFor="password" className={styles.labelIcon}>
                 <FontAwesomeIcon
@@ -193,7 +220,7 @@ class Login extends Component {
             className={styles.loading}
             style={
               ({ opacity: this.state.divDisabled ? 1 : 0 },
-              { zIndex: this.state.divDisabled ? "9" : "-1" })
+                { zIndex: this.state.divDisabled ? "9" : "-1" })
             }
           >
             {this.state.divDisabled ? <Loader /> : ""}
