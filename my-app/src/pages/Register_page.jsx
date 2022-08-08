@@ -21,7 +21,7 @@ import {
   faEyeSlash,
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import ReactTooltip from 'react-tooltip';
+import ReactTooltip from "react-tooltip";
 
 //local imports
 import { User } from "../models/models.ts";
@@ -31,7 +31,7 @@ import arrowPic from "../assets/arrow_signIn.png";
 import styles from "../css/pages/Register.module.css";
 import loginStyles from "../css/pages/Login.module.css";
 import Loader from "../components/Loader.jsx";
-
+import ErrorMessage from "../components/ErrorMessage.jsx";
 //reg expression
 const numSymbolReg = /([0-9]|[#?!@$%^/&*-.<> ])/;
 const uppercaseReg = /([A-Z])/;
@@ -55,15 +55,16 @@ function ReturnButton() {
 
 class Register extends Component {
   state = {
-    /*state for icons highlight */
-    user: false,
+    //user
     userValue: "",
-    userValueBool: false,
+    userValueBool: false, //to show the icon check
     userAccepted: false,
+    //emai
     email: false,
     emailValue: "",
-    emailValueBool: false,
+    emailValueBool: false, //to show the icon check
     emailAccepted: false,
+    //password
     password: false,
     passwordString: "",
     passwordConditions: false,
@@ -71,11 +72,14 @@ class Register extends Component {
     lengthCondition: false, //for password check
     numSymbolCondition: false, //for password check
     uppercaseCondition: false, //for password check
+    eye: false, //to show the eye for hide/show pwd
+    //password confirmation
     retype: false,
     retypeValue: "",
     retypeValueBool: false,
-    eye: false,
-    divDisabled: false,
+    //other
+    divDisabled: false, //to disable the div on load
+    errors: [],
   };
 
   ChangePasswordToText = () => {
@@ -210,14 +214,17 @@ class Register extends Component {
   //clearing inputs
   clearInputs = () => {
     this.setState({
+      //user
       user: false,
       userValue: "",
-      userValueBool: false,
+      userValueBool: false, //to show the icon check
       userAccepted: false,
+      //emai
       email: false,
       emailValue: "",
-      emailValueBool: false,
+      emailValueBool: false, //to show the icon check
       emailAccepted: false,
+      //password
       password: false,
       passwordString: "",
       passwordConditions: false,
@@ -225,11 +232,13 @@ class Register extends Component {
       lengthCondition: false, //for password check
       numSymbolCondition: false, //for password check
       uppercaseCondition: false, //for password check
+      eye: false, //to show the eye for hide/show pwd
+      //password confirmation
       retype: false,
       retypeValue: "",
       retypeValueBool: false,
-      eye: false,
-      divDisabled: false,
+      //other
+      divDisabled: false, //to disable the div on load
     });
   };
   render() {
@@ -238,8 +247,7 @@ class Register extends Component {
         <div className={styles.container}>
           <div
             className={styles.formContainer}
-            disabled={this.state.divDisabled}
-          >
+            disabled={this.state.divDisabled}>
             <ReturnButton />
             <h2>Sign up</h2>
             <h4>Fill in the form bellow to continue</h4>
@@ -277,6 +285,7 @@ class Register extends Component {
                   ""
                 )}
               </label>
+              {/* <ErrorMessage message="hello world" /> */}
             </div>
 
             <br />
@@ -349,8 +358,7 @@ class Register extends Component {
                 <h4
                   style={{
                     color: this.state.lengthCondition ? "green" : "red",
-                  }}
-                >
+                  }}>
                   <FontAwesomeIcon
                     icon={this.state.lengthCondition ? faCheck : faXmark}
                   />
@@ -359,8 +367,7 @@ class Register extends Component {
                 <h4
                   style={{
                     color: this.state.numSymbolCondition ? "green" : "red",
-                  }}
-                >
+                  }}>
                   <FontAwesomeIcon
                     icon={this.state.numSymbolCondition ? faCheck : faXmark}
                   />
@@ -369,8 +376,7 @@ class Register extends Component {
                 <h4
                   style={{
                     color: this.state.uppercaseCondition ? "green" : "red",
-                  }}
-                >
+                  }}>
                   <FontAwesomeIcon
                     icon={this.state.uppercaseCondition ? faCheck : faXmark}
                   />
@@ -391,7 +397,7 @@ class Register extends Component {
                 onChange={this.retypeChange}
                 value={this.state.retypeValue}
                 data-tip="Passwords must match"
-              ></input>
+              />
               <label htmlFor="password" className={styles.labelIcon}>
                 <FontAwesomeIcon
                   icon={faUnlock}
@@ -404,7 +410,8 @@ class Register extends Component {
                   <FontAwesomeIcon
                     icon={faCheck}
                     fontSize={30}
-                    color={this.state.retype ? "green" : "#C3C3C3"}
+                    color={this.state.retypeValueBool ? "green" : "#C3C3C3"}
+                    data-tip="if it's green then they're matching"
                   />
                 ) : (
                   ""
@@ -422,8 +429,7 @@ class Register extends Component {
             <button
               type="submit"
               className={styles.submitBtn}
-              onClick={(e) => this.submitSignUp(e)}
-            >
+              onClick={(e) => this.submitSignUp(e)}>
               <p>Sign up </p>
               <img id="arrow" src={arrowPic} alt="" />
             </button>
@@ -441,9 +447,8 @@ class Register extends Component {
             className={styles.loading}
             style={
               ({ opacity: this.state.divDisabled ? 1 : 0 },
-                { zIndex: this.state.divDisabled ? "9" : "-1" })
-            }
-          >
+              { zIndex: this.state.divDisabled ? "9" : "-1" })
+            }>
             {this.state.divDisabled ? <Loader /> : ""}
           </div>
         </div>
@@ -451,7 +456,10 @@ class Register extends Component {
               -wait 300ms to show the toltip to avoid accidental shows
               -remove it after 3s
         */}
-        <ReactTooltip delayShow={300} afterShow={(e) => setTimeout(ReactTooltip.hide, 3000)} />
+        <ReactTooltip
+          delayShow={300}
+          afterShow={(e) => setTimeout(ReactTooltip.hide, 3000)}
+        />
       </div>
     );
   }
