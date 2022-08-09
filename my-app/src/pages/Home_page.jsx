@@ -13,7 +13,7 @@ class Home extends Component {
         <Header />
         <div className={styles.space}></div>
         <div className={styles.container}>
-          <SideBar />
+          <SideBar className={styles.sideBar} />
 
           <div className={styles.rightside}>
             <div className={styles.up}>
