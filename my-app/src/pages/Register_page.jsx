@@ -1,6 +1,5 @@
 /*
-    TODO: -  check ta3 confirm password should stay green onblur
-           -  Error display kayen 3:
+    TODO: -  Error display kayen 3:
                 - ta3 fill in the form ki ydir submit l form khawya
                 - ki ykoun server response 409 (conflict)
                 - f regex lokan ykoun kayen info on hover on what it should should contain 
@@ -79,7 +78,16 @@ class Register extends Component {
     retypeValueBool: false,
     //other
     divDisabled: false, //to disable the div on load
-    errors: [],
+    errors: [], //used on every onBlur on every input to display errors or to not
+    /*should be like this : 
+      errors : {
+        "all" : "msg", //errors from the server
+        "username": "msg",
+        "email": "msg",
+        "password": "msg",
+        "confirmPwd" : "msg"
+      }
+    */
   };
 
   ChangePasswordToText = () => {
@@ -177,39 +185,65 @@ class Register extends Component {
     let userNAeccepted = this.state.userAccepted;
     let isEmailAcceted = this.state.emailAccepted;
     let samePwd = this.state.retypeValueBool;
-
-    if (pwdAcceted && userNAeccepted && isEmailAcceted && samePwd) {
-      //set the the div to disabled to prevent more inputs
-      this.setState({
-        divDisabled: true,
-      });
-      //console.log("proceed to login");
-      const currentUser: User = {
-        user: this.state.userValue,
-        email: this.state.emailValue,
-        password: this.state.passwordString,
-      };
-      axios({
-        method: "post",
-        url: "https://sbaka-e-com-website.deno.dev/adduser",
-        data: currentUser,
-      })
-        .then((response) => {
-          this.setState({
-            divDisabled: false,
-          });
-          console.log(response);
-          this.clearInputs();
-        })
-        .catch((err) => {
-          if ((err.status = 409)) {
-            console.log("status = 409");
-            // console.log(err.response.data.msg);
-          }
+    if (!this.isFormEmpty()) {
+      if (pwdAcceted && userNAeccepted && isEmailAcceted && samePwd) {
+        //set the the div to disabled to prevent more inputs
+        this.setState({
+          divDisabled: true,
         });
+        //console.log("proceed to login");
+        const currentUser: User = {
+          user: this.state.userValue,
+          email: this.state.emailValue,
+          password: this.state.passwordString,
+        };
+        axios({
+          method: "post",
+          url: "https://sbaka-e-com-website.deno.dev/adduser",
+          data: currentUser,
+        })
+          .then((response) => {
+            this.setState({
+              divDisabled: false,
+            });
+            console.log(response);
+            this.clearInputs();
+          })
+          .catch((err) => {
+            if ((err.status = 409)) {
+              // console.log("status = 409");
+              this.setState({
+                errors: { All: err.response.data.msg },
+                divDisabled: false,
+              });
+            } else {
+              this.setState({
+                errors: { All: "Unexpected server error code: " + err.status },
+                divDisabled: false,
+              });
+            }
+          });
+      } else {
+        this.setState({
+          errors: { All: "Make sure you got all the format correct" },
+        });
+      }
     } else {
-      console.log(pwdAcceted, userNAeccepted, isEmailAcceted, samePwd);
+      this.setState({
+        errors: { All: "fill in all the inputs to proceed" },
+      });
+
+      // console.log(pwdAcceted, userNAeccepted, isEmailAcceted, samePwd);
     }
+  };
+  isFormEmpty = () => {
+    //if one of these is true then yes the form is empty
+    return (
+      this.state.userValue.length === 0 ||
+      this.state.emailValue.length === 0 ||
+      this.state.passwordString.length === 0 ||
+      this.state.retypeValue.length === 0
+    );
   };
   //clearing inputs
   clearInputs = () => {
@@ -236,10 +270,17 @@ class Register extends Component {
       //password confirmation
       retype: false,
       retypeValue: "",
-      retypeValueBool: false,
+      retypeValueBool: false, //should be retypeAccepted
       //other
       divDisabled: false, //to disable the div on load
+      errors: [],
     });
+  };
+  isEmpty = (object) => {
+    for (const property in object) {
+      return false;
+    }
+    return true;
   };
   render() {
     return (
@@ -260,12 +301,21 @@ class Register extends Component {
                 onFocus={() =>
                   this.setState({ user: true })
                 } /*user icon highlight added*/
-                onBlur={() =>
-                  this.setState({ user: false })
-                } /*user icon highlight removed */
+                onBlur={() => {
+                  this.setState({ user: false });
+                  if (!this.state.userAccepted) {
+                    this.setState({
+                      errors: { username: "Enter a valid username format" },
+                    });
+                  } else {
+                    this.setState({
+                      errors: { username: null },
+                    });
+                  }
+                }} /*user icon highlight removed */
                 value={this.state.userValue}
                 onChange={this.userChange}
-                data-tip="can only be 5-18 alphanumerics long and only supports '-' or '_'"
+                data-tip="can only be 5-18 alphanumerics long and only supports '-' or '_' in between"
               />
               <label htmlFor="username" className={styles.labelIcon}>
                 <FontAwesomeIcon
@@ -285,7 +335,7 @@ class Register extends Component {
                   ""
                 )}
               </label>
-              {/* <ErrorMessage message="hello world" /> */}
+              <ErrorMessage message={this.state.errors.username} />
             </div>
 
             <br />
@@ -296,11 +346,21 @@ class Register extends Component {
                 placeholder="E-mail"
                 autoComplete="off"
                 onFocus={() => this.setState({ email: true })}
-                onBlur={() => this.setState({ email: false })}
+                onBlur={() => {
+                  this.setState({ email: false });
+                  if (!this.state.emailAccepted) {
+                    this.setState({
+                      errors: { email: "Enter a valid email format" },
+                    });
+                  } else {
+                    this.setState({
+                      errors: { email: null },
+                    });
+                  }
+                }}
                 value={this.state.emailValue}
                 onChange={this.mailChange}
               />
-
               <label htmlFor="email" className={styles.labelIcon}>
                 <FontAwesomeIcon
                   icon={faAt}
@@ -319,6 +379,7 @@ class Register extends Component {
                   ""
                 )}
               </label>
+              <ErrorMessage message={this.state.errors.email} />
             </div>
 
             <br />
@@ -331,6 +392,16 @@ class Register extends Component {
                 onBlur={(e) => {
                   this.setState({ password: false });
                   this.passwordChange(e);
+                  if (!this.state.passwordAccepted) {
+                    //FIXME: fix this bug where the err msg doesnt disappear right away take +1 step
+                    this.setState({
+                      errors: { password: "Enter a valid password" },
+                    });
+                  } else {
+                    this.setState({
+                      errors: { password: null },
+                    });
+                  }
                 }}
                 onChange={this.passwordChange}
                 value={this.state.passwordString}
@@ -351,6 +422,7 @@ class Register extends Component {
                   onClick={this.ChangePasswordToText}
                 />
               </label>
+              <ErrorMessage message={this.state.errors.password} />
             </div>
             {/* this section is for showing the paasword conditions to be fulfilled or not */}
             {this.state.passwordConditions ? (
@@ -393,7 +465,18 @@ class Register extends Component {
                 type="password"
                 placeholder="Retype your password"
                 onFocus={() => this.setState({ retype: true })}
-                onBlur={() => this.setState({ retype: false })}
+                onBlur={() => {
+                  this.setState({ retype: false });
+                  if (!this.state.retypeValueBool) {
+                    this.setState({
+                      errors: { retype: "passwords don't match" },
+                    });
+                  } else {
+                    this.setState({
+                      errors: { retype: null },
+                    });
+                  }
+                }}
                 onChange={this.retypeChange}
                 value={this.state.retypeValue}
                 data-tip="Passwords must match"
@@ -417,7 +500,9 @@ class Register extends Component {
                   ""
                 )}
               </label>
+              <ErrorMessage message={this.state.errors.retype} />
             </div>
+            <ErrorMessage message={this.state.errors.All} />
           </div>
           <div className={styles.signUp}>
             <p>
