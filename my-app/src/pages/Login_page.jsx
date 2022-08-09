@@ -79,7 +79,6 @@ class Login extends Component {
       go make a get request with the url /user/{email}/{password}
       and then sets {divDisabled} back to false 
       TODO: navigate to the next page right after.
-       
     */
     const client = axios.create({
       baseURL: "http://sbaka-e-com-website.deno.dev",
