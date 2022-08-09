@@ -143,6 +143,7 @@ class Login extends Component {
       passwordValue: "",
       user: [],
       divDisabled: false,
+      errors: [],
     });
   };
   render() {
