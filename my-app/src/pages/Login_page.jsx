@@ -15,6 +15,7 @@ import googleLogo from "../assets/google.png";
 import arrowPic from "../assets/arrow_signIn.png";
 import Loader from "../components/Loader";
 import styles from "../css/pages/Login.module.css"; //css
+import ErrorMessage from "../components/ErrorMessage";
 
 function ReturnButton() {
   const navigate = useNavigate();
@@ -25,11 +26,10 @@ function ReturnButton() {
   );
 }
 
-
 class Login extends Component {
   state = {
     eye: false /*to handle the changes on click of the icon*/,
-    email: false, //this is for styling 
+    email: false, //this is for styling
     emailAccepted: false, //this is for handeling the regex
     emailValue: "", // this is for the actual value of the mail
     password: false,
@@ -37,6 +37,7 @@ class Login extends Component {
     passwordValue: "",
     user: [],
     divDisabled: false,
+    errors: [],
   };
 
   emailValueHandler = (event) => {
@@ -53,19 +54,16 @@ class Login extends Component {
     // console.log(this.state.emailAccepted);
   };
 
-
   passwordValueHandler = (event) => {
     this.setState({ passwordValue: event.target.value });
     // console.log("state: " + this.state.passwordValue);
     if (event.target.value.length > 7) {
       if (event.target.value.includes("'") || event.target.value.includes('"'))
-        this.setState({ passwordAccepted: false })
-      else
-        this.setState({ passwordAccepted: true })
+        this.setState({ passwordAccepted: false });
+      else this.setState({ passwordAccepted: true });
     }
-
   };
-  componentDidMount() { }
+  componentDidMount() {}
   ChangePasswordToText = () => {
     /*switch beetween icons + password or text type*/
     this.setState({ eye: !this.state.eye });
@@ -88,36 +86,51 @@ class Login extends Component {
     });
     const email = this.state.emailValue;
     const pwd = this.state.passwordValue;
-
-    // console.log("hello " + email + " " + pwd);
-    if (this.state.emailAccepted && this.state.passwordAccepted) {
-      this.setState({
-        divDisabled: true,
-      });
-
-      client
-        .get("/users/" + email + "/" + pwd)
-        .then((response) => {
-          // console.log(response);
-          if (response.data.success) {
-            console.log(response.data.body[0]);
-            this.clearInputs();
-          }
-          this.setState({
-            divDisabled: false,
-          });
-        })
-        .catch((err) => {
-          if (err.status === 404) {
-            console.log("wrong combination");
-          }
-          console.log("err");
-          this.setState({
-            divDisabled: false,
-          });
+    if (email !== "" && pwd !== "") {
+      if (this.state.emailAccepted && this.state.passwordAccepted) {
+        this.setState({
+          divDisabled: true,
         });
+
+        client
+          .get("/users/" + email + "/" + pwd)
+          .then((response) => {
+            // console.log(response);
+            if (response.data.success) {
+              console.log(response.data.body[0]);
+              this.clearInputs();
+            }
+            this.setState({
+              divDisabled: false,
+            });
+          })
+          .catch((err) => {
+            let errMsg = "";
+            if (err.response.status === 404) {
+              errMsg = err.response.data.msg;
+              //assing the message to the errors array
+              this.setState({
+                errors: { All: errMsg },
+                divDisabled: false,
+              });
+            } else {
+              errMsg = "Unnexpected error has accured";
+              //assing the message to the errors array
+              this.setState({
+                errors: { All: errMsg },
+                divDisabled: false,
+              });
+            }
+          });
+      } else {
+        this.setState({
+          errors: { All: "Make sure you got all the format correct" },
+        });
+      }
     } else {
-      //TODO: -add red stuff so the user knows that these are required (email,pwd)
+      this.setState({
+        errors: { All: "Fill in all the inputs to proceed" },
+      });
     }
   };
   // submit = () => {
@@ -139,8 +152,7 @@ class Login extends Component {
         <div className={styles.container_login}>
           <div
             className={styles.formContainer}
-            disabled={this.state.divDisabled}
-          >
+            disabled={this.state.divDisabled}>
             <ReturnButton />
             <h2>Sign in</h2>
             <h4>Fill in the form bellow to continue</h4>
@@ -152,7 +164,10 @@ class Login extends Component {
                 placeholder="E-mail"
                 value={this.state.emailValue}
                 onFocus={() => this.setState({ email: true })}
-                onBlur={(e) => { this.setState({ email: false }); this.emailValueHandler(e) }}
+                onBlur={(e) => {
+                  this.setState({ email: false });
+                  this.emailValueHandler(e);
+                }}
                 onChange={this.emailValueHandler}
               />
               <label htmlFor="email" className={styles.labelIcon}>
@@ -172,7 +187,10 @@ class Login extends Component {
                 placeholder="Password"
                 value={this.state.passwordValue}
                 onFocus={() => this.setState({ password: true })}
-                onBlur={(e) => { this.setState({ password: false }); this.passwordValueHandler(e) }}
+                onBlur={(e) => {
+                  this.setState({ password: false });
+                  this.passwordValueHandler(e);
+                }}
                 onChange={this.passwordValueHandler}
               />
               <label htmlFor="password" className={styles.labelIcon}>
@@ -192,8 +210,8 @@ class Login extends Component {
                 />
               </label>
             </div>
+            <ErrorMessage message={this.state.errors.All} />
           </div>
-
           <div className={styles.signUp}>
             <p>
               You don't have an account yet ? <a href="/Register">Sign up</a>
@@ -204,8 +222,7 @@ class Login extends Component {
             <button
               type="submit"
               className={styles.submitBtn}
-              onClick={this.fetchUser}
-            >
+              onClick={this.fetchUser}>
               <p>Sign in </p>
               <img id="arrow" src={arrowPic} alt="" />
             </button>
@@ -220,9 +237,8 @@ class Login extends Component {
             className={styles.loading}
             style={
               ({ opacity: this.state.divDisabled ? 1 : 0 },
-                { zIndex: this.state.divDisabled ? "9" : "-1" })
-            }
-          >
+              { zIndex: this.state.divDisabled ? "9" : "-1" })
+            }>
             {this.state.divDisabled ? <Loader /> : ""}
           </div>
         </div>
