@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+<div align="center">
+<h1 align="center">
+<img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
+<br>e-com-website</h1>
+<h3>◦ HTTPStatus Exception: 401</h3>
+<h3>◦ Developed with the software and tools below.</h3>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<p align="center">
+<img src="https://img.shields.io/badge/SVG-FFB13B.svg?style&logo=SVG&logoColor=black" alt="SVG" />
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style&logo=JavaScript&logoColor=black" alt="JavaScript" />
+<img src="https://img.shields.io/badge/HTML5-E34F26.svg?style&logo=HTML5&logoColor=white" alt="HTML5" />
+<img src="https://img.shields.io/badge/React-61DAFB.svg?style&logo=React&logoColor=black" alt="React" />
 
-## Available Scripts
+<img src="https://img.shields.io/badge/Axios-5A29E4.svg?style&logo=Axios&logoColor=white" alt="Axios" />
+<img src="https://img.shields.io/badge/TypeScript-3178C6.svg?style&logo=TypeScript&logoColor=white" alt="TypeScript" />
+<img src="https://img.shields.io/badge/Markdown-000000.svg?style&logo=Markdown&logoColor=white" alt="Markdown" />
+<img src="https://img.shields.io/badge/JSON-000000.svg?style&logo=JSON&logoColor=white" alt="JSON" />
+</p>
+<img src="https://img.shields.io/github/license/sbaka/e-com-website?style&color=5D6D7E" alt="GitHub license" />
+<img src="https://img.shields.io/github/last-commit/sbaka/e-com-website?style&color=5D6D7E" alt="git-last-commit" />
+<img src="https://img.shields.io/github/commit-activity/m/sbaka/e-com-website?style&color=5D6D7E" alt="GitHub commit activity" />
+<img src="https://img.shields.io/github/languages/top/sbaka/e-com-website?style&color=5D6D7E" alt="GitHub top language" />
+</div>
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📖 Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [📖 Table of Contents](#-table-of-contents)
+- [📍 Overview](#-overview)
+- [📦 Features](#-features)
+- [📂 Repository Structure](#-repository-structure)
+- [⚙️ Modules](#modules)
+- [🚀 Getting Started](#-getting-started)
+  - [🔧 Installation](#-installation)
+  - [🤖 Running e-com-website](#-running-e-com-website)
+  - [🧪 Tests](#-tests)
+- [🛣 Roadmap](#-roadmap)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+- [👏 Acknowledgments](#-acknowledgments)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 📍 Overview
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+As a team of 4 (@BeeLTL, @Reikoii, @Maaaadox) we had the idea to implement a modulable e-commerce website for commercialising it, and at the same time learn more about design, frontend and backend. The project isn't done yet as it isn't even remotely usable.
 
-### `npm run build`
+![Screenshot of the website](image.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📦 Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Filtering
+- Front-end implementation
 
-### `npm run eject`
+## TODOS
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Implement the remaining features
+- Responsiveness
+- Backend fonctionalities
+-
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 📂 Repository Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```sh
+└── e-com-website/
+    ├── .gitignore
+    ├── package-lock.json
+    ├── package.json
+    ├── public/
+    │   ├── favicon.ico
+    │   ├── index.html
+    │   ├── logo192.png
+    │   ├── logo512.png
+    │   ├── manifest.json
+    │   └── robots.txt
+    ├── README.md
+    └── src/
+        ├── App.test.js
+        ├── assets/
+        ├── components/
+        ├── css/
+        ├── data/
+        ├── index.js
+        ├── logo.svg
+        ├── models/
+        ├── pages/
+        ├── react-app-env.d.ts
+        ├── reportWebVitals.js
+        └── setupTests.js
+```
 
-## Learn More
+## 🛣 Roadmap
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+> - [x] `ℹ️  Task 1: Implement X`
+> - [ ] `ℹ️  Task 2: Implement Y`
+> - [ ] `ℹ️ ...`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Contributions are always welcome! Please follow these steps:
 
-### Analyzing the Bundle Size
+1. Fork the project repository. This creates a copy of the project on your account that you can modify without affecting the original project.
+2. Clone the forked repository to your local machine using a Git client like Git or GitHub Desktop.
+3. Create a new branch with a descriptive name (e.g., `new-feature-branch` or `bugfix-issue-123`).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```sh
+git checkout -b new-feature-branch
+```
 
-### Making a Progressive Web App
+4. Make changes to the project's codebase.
+5. Commit your changes to your local branch with a clear commit message that explains the changes you've made.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```sh
+git commit -m 'Implemented new feature.'
+```
 
-### Advanced Configuration
+6. Push your changes to your forked repository on GitHub using the following command
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```sh
+git push origin new-feature-branch
+```
 
-### Deployment
+7. Create a new pull request to the original project repository. In the pull request, describe the changes you've made and why they're necessary.
+   The project maintainers will review your changes and provide feedback or merge them into the main branch.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 📄 License
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the `ℹ️  LICENSE-TYPE` License. See the [LICENSE-Type](LICENSE) file for additional info.
+
+---
+
+## 👏 Acknowledgments
+
+`- ℹ️ List any resources, contributors, inspiration, etc.`
+
+[↑ Return](#Top)
+
+---
