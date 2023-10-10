@@ -53,7 +53,6 @@ As a team of 4 (@BeeLTL, @Reikoii, @Maaaadox) we had the idea to implement a mod
 - Implement the remaining features
 - Responsiveness
 - Backend fonctionalities
-- ***
 
 ## 📂 Repository Structure
 
@@ -119,7 +118,7 @@ git push origin new-feature-branch
 
 ## 📄 License
 
-This project is licensed under the `ℹ️  LICENSE-TYPE` License. See the [LICENSE-Type](LICENSE) file for additional info.
+This project is licensed under the `ℹ️  MIT License` License. See the [MIT License](LICENSE) file for additional info.
 
 ---
 
