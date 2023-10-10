@@ -1,29 +1,21 @@
-* {
-  font-family: "Inter", sans-serif;
-  margin: 0;
-}
 
 .card {
   width: 250px;
   height: 450px;
   margin-right: 40px;
-  margin-top: 20px ;
+  margin-top: 20px;
   transition: 00.1s ease-in;
   cursor: pointer;
-
 }
 .card:hover {
   box-shadow: 2px 2px 5px 5px #7e7e7e2b;
   border-radius: 15px;
   transition: 00.1s ease-in;
-  
-
 }
 .productimage {
-  position: relative; 
+  position: relative;
   width: 100%;
   height: 350px;
-
 }
 .productpic {
   width: 100%;
@@ -31,23 +23,29 @@
   object-fit: cover;
   border-radius: 15px;
 }
- .iconcard {
+.iconcard {
   position: absolute;
   padding: 5px;
   right: 10px;
   top: 10px;
 }
 .productinfo {
-  width: 100%;
   height: 100px;
-  padding-top: 10px;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 10px;
 }
-
+.productprice {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 .description {
   margin-bottom: 10px;
   font-size: 14px;
-  color: #72777A;
+  color: #72777a;
 }
 
 .price {
@@ -55,8 +53,7 @@
   font-size: 20px;
 }
 .realprice {
-  color: #72777A;
+  color: #72777a;
   font-weight: bold;
-  margin-left: 50px;
   text-decoration: line-through;
 }

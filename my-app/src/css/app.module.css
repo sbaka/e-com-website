@@ -3,13 +3,13 @@
   flex-direction: row;
   justify-content: space-around;
 }
-.up{
-  position: absolute;
+.up {
   display: flex;
   justify-content: space-between;
-  width: 85%;
+  padding: 0px 20px;
+  width: 90%;
 }
-.up > h1{
+.up > h1 {
   font-size: 36px;
   font-weight: bold;
   padding-left: 28px;
@@ -18,5 +18,9 @@
   /*space above filter*/
   height: 50px;
   width: 100%;
-
+}
+.rightside {
+  display: flex;
+  flex: 5;
+  flex-direction: column;
 }

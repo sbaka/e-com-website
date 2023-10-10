@@ -62,7 +62,7 @@ input:focus {
   padding-right: 45px;
 }
 
-a {
+.signUp >  p > a {
   color: #2db3ff;
   font-weight: 600;
   text-decoration: none;
