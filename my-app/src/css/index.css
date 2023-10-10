@@ -1,7 +1,11 @@
 /*
        ****************Global CSS**********************
 */
-
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+* {
+    font-family: "Inter", sans-serif;
+    margin: 0;
+}
 body,html{
     height: 100%;
 }
@@ -9,4 +13,21 @@ body,html{
 .hlessLink{
     text-decoration: none;
     color: #222;
+}
+div[disabled] {
+    pointer-events: none;
+    opacity: 0.7;
+    transition: 0.1 ease-out;
+}
+.loader{
+    background-color: rgb(156, 156, 156);
+    border-radius: 15px;
+    width: 120px;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* align-self: center;
+    justify-self: center; */
+    z-index: 9;
 }

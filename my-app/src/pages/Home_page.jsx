@@ -1,19 +1,19 @@
 import { Component } from "react";
-import Header from "../components/header";
+import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import CardList from "../components/CardList";
 import Sortby from "../components/Sortby";
 
-import styles from "../css/app.module.css";
+import styles from "../css/pages/HomePage.module.css";
 
-class App extends Component {
+class Home extends Component {
   render() {
     return (
       <div className="App">
         <Header />
         <div className={styles.space}></div>
         <div className={styles.container}>
-          <SideBar />
+          <SideBar className={styles.sideBar} />
 
           <div className={styles.rightside}>
             <div className={styles.up}>
@@ -27,4 +27,4 @@ class App extends Component {
     );
   }
 }
-export default App;
+export default Home;

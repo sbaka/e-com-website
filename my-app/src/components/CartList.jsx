@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Bag from "./CartItem";
-import styles from "../css/BagList.module.css";
-class BagList extends Component {
+import CartItem from "./CartItem";
+import styles from "../css/components/CartList.module.css";
+class CartList extends Component {
   state = {
     chemises: [
       {
@@ -59,7 +59,7 @@ class BagList extends Component {
     return (
       <div className={styles.bags}>
         {this.state.chemises.map((bag) => (
-          <Bag
+          <CartItem
             img={bag.img}
             description={bag.description}
             promotion={bag.promotion}
@@ -70,4 +70,4 @@ class BagList extends Component {
   }
 }
 
-export default BagList;
+export default CartList;

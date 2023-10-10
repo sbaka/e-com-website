@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-around;
 }
+
 .up {
   display: flex;
   justify-content: space-between;

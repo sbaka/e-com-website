@@ -1,6 +1,6 @@
 import { Component } from "react";
-import MultiRangeSlider from "../components/multiSlider";
-import styles from "../css/SideBar.module.css";
+import MultiRangeSlider from "../components/MultiRangeSlider";
+import styles from "../css/components/SideBar.module.css";
 class SideBar extends Component {
   render() {
     return (

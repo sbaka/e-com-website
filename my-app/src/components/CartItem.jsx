@@ -6,7 +6,7 @@ import {
   faXmark,
 } from "@fortawesome/free-solid-svg-icons";
 
-import styles from "../css/CartItem.module.css";
+import styles from "../css/components/CartItem.module.css";
 
 /* NOT FINAL NEED SOME IMPROVMENT IN CSS BUT GOOD FOR A BEGINING */
 /* 

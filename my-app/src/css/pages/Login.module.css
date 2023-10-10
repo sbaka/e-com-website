@@ -1,27 +1,45 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-* {
-  font-family: "Inter", sans-serif;
-  margin: 0;
-}
+
 .parent {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
+  flex-direction: row;
 }
 .container_login {
   width: 600px;
-  height: 650px;
+  height: 65%;
   box-shadow: 5px 10px 10px 5px #0000002b;
   border-radius: 15px;
+  margin: 55px;
   display: flex;
-  justify-content: space-evenly; /* to control main axis*/
-  align-items: flex-start; /* to control cross axis*/
+  flex-direction: column;
+}
+.loading{
+  /* for the loading it has the same height and width of the real container but with 
+    position set to absolute so that it overlaps the actual .container
+  */
+  position: absolute;
+  width: 600px;
+  height: 65%;
+  z-index: -1; /* using this to tell the html that this goes beneath the other div then onClick setting it to 9 so that it comes on top*/
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  transition: opacity .25s,visibility 1s;
+}
+
+.formContainer{
+  height: 75%;
+  display: flex;
+  justify-content: space-evenly;  /* to control main axis*/
+  align-items: flex-start;  /* to control cross axis*/
   flex-direction: column;
   padding-left: 45px;
-  margin: 55px;
 }
+
+
 /* all of them have pointer cursor, btns and those 2 continue with google/fb*/
 button,
 bottomDiv > div > img {
@@ -71,8 +89,8 @@ h4 {
   width: 90%;
 }
 .signUp {
-  align-self: center;
-  padding-right: 45px;
+  text-align: center;
+  margin-bottom: 20px ;
 }
 
 .signUp > p> a {
@@ -97,10 +115,10 @@ h4 {
 }
 
 .bottomDiv {
-  width: 100%;
-  padding-right: 45px;
+  width: 80%;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
+  margin: 0 45px;
 }

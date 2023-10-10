@@ -1,0 +1,13 @@
+{
+  "$schema": "https://deno.land/x/denon@2.5.0/schema.json",
+  "scripts": {
+    "start": {
+      "cmd": "deno run server.ts --unsafely-ignore-certificate-errors",
+      "allow": [
+        "net", 
+        "read",
+        "env"
+      ]
+    }
+  }
+}
