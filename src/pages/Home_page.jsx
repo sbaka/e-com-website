@@ -2,7 +2,7 @@ import { Component } from "react";
 import React from "react";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
-import CardList from "../components/CardList";
+import CardList from "../components/CardList.tsx";
 import Sortby from "../components/Sortby";
 
 import styles from "../css/pages/HomePage.module.css";

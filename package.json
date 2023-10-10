@@ -19,6 +19,7 @@
     "react-custom-scrollbars-2": "^4.5.0",
     "react-dom": "^18.2.0",
     "react-loader-spinner": "^5.1.7-beta.1",
+    "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
     "react-select": "^5.4.0",
     "react-tooltip": "^4.2.21",

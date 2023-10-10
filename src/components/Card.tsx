@@ -18,7 +18,11 @@ class Card extends Component<any, any> {
                   fontSize={25}
                 />
               </span>
-              <img className={styles.productpic} src={this.props.img} />
+              <img
+                className={styles.productpic}
+                src={this.props.img}
+                alt="some image"
+              />
             </div>
             <div className={styles.productinfo}>
               <p className={styles.description}>{this.props.description}</p>
