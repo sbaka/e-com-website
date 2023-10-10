@@ -2,7 +2,7 @@
 <h1 align="center">
 <img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-markdown-open.svg" width="100" />
 <br>e-com-website</h1>
-<h3>◦ HTTPStatus Exception: 401</h3>
+<h3>◦ Unfinished </h3>
 <h3>◦ Developed with the software and tools below.</h3>
 
 <p align="center">
@@ -30,15 +30,8 @@
 - [📍 Overview](#-overview)
 - [📦 Features](#-features)
 - [📂 Repository Structure](#-repository-structure)
-- [⚙️ Modules](#modules)
-- [🚀 Getting Started](#-getting-started)
-  - [🔧 Installation](#-installation)
-  - [🤖 Running e-com-website](#-running-e-com-website)
-  - [🧪 Tests](#-tests)
-- [🛣 Roadmap](#-roadmap)
 - [🤝 Contributing](#-contributing)
 - [📄 License](#-license)
-- [👏 Acknowledgments](#-acknowledgments)
 
 ---
 
@@ -60,9 +53,7 @@ As a team of 4 (@BeeLTL, @Reikoii, @Maaaadox) we had the idea to implement a mod
 - Implement the remaining features
 - Responsiveness
 - Backend fonctionalities
--
-
----
+- ***
 
 ## 📂 Repository Structure
 
@@ -93,12 +84,6 @@ As a team of 4 (@BeeLTL, @Reikoii, @Maaaadox) we had the idea to implement a mod
         ├── reportWebVitals.js
         └── setupTests.js
 ```
-
-## 🛣 Roadmap
-
-> - [x] `ℹ️  Task 1: Implement X`
-> - [ ] `ℹ️  Task 2: Implement Y`
-> - [ ] `ℹ️ ...`
 
 ---
 
@@ -137,10 +122,6 @@ git push origin new-feature-branch
 This project is licensed under the `ℹ️  LICENSE-TYPE` License. See the [LICENSE-Type](LICENSE) file for additional info.
 
 ---
-
-## 👏 Acknowledgments
-
-`- ℹ️ List any resources, contributors, inspiration, etc.`
 
 [↑ Return](#Top)
 
