@@ -1,0 +1,12 @@
+/*
+       ****************Global CSS**********************
+*/
+
+body,html{
+    height: 100%;
+}
+
+.hlessLink{
+    text-decoration: none;
+    color: #222;
+}

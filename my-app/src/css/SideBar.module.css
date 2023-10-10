@@ -1,0 +1,45 @@
+.sideContainer {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 80%;
+  padding-left: 35px;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.sideContainer > h2 {
+  font-size: 36px;
+}
+.sideContainer > ul > h4,
+.sideContainer > h4 {
+  font-size: 28px;
+  color: #222222;
+}
+.sideContainer > ul {
+  list-style-type: none;
+  padding-left: 0%;
+}
+.sideContainer > ul > li {
+  display: flex;
+  align-items: center;
+  margin: 15px 0px;
+}
+.label {
+  font-size: 22px;
+}
+.hr {
+  border-top: 1px solid #eeeeef;
+  width: 75%;
+  height: 0.5px;
+}
+
+.sideElt {
+  margin: 0px 10px;
+  width: 20px;
+  height: 20px;
+}
+.range {
+  width: 60%;
+}
